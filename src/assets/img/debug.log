@@ -1,0 +1,34 @@
+[0324/113302.508:INFO:CONSOLE(1)] "Long rAF frame-time", source: file:///C:/Program%20Files/Adobe/Adobe%20Photoshop%202020/Required/www-rich-tooltips/build/external.js (1)
+[0407/115619.286:INFO:CONSOLE(1)] "Long rAF frame-time", source: file:///C:/Program%20Files/Adobe/Adobe%20Photoshop%202020/Required/www-rich-tooltips/build/external.js (1)
+[0407/122857.739:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/122902.754:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/122907.769:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/122912.787:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/122917.807:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/122922.830:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/122927.872:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/122932.883:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/122937.906:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/122942.925:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/122947.942:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/122952.966:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/122957.985:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/123002.990:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/123008.011:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/123013.026:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/123018.054:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/123023.069:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/123028.096:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/123033.117:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/123038.138:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/123043.151:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/123048.171:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/123053.183:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/123058.212:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/123103.235:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0407/123108.251:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0408/100018.380:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0408/141708.444:WARNING:ipc_message_attachment_set.cc(49)] MessageAttachmentSet destroyed with unconsumed attachments: 0/1
+[0408/141708.457:WARNING:ipc_message_attachment_set.cc(49)] MessageAttachmentSet destroyed with unconsumed attachments: 0/1
+[0408/141708.682:ERROR:browser_gpu_channel_host_factory.cc(139)] Failed to launch GPU process.
+[0409/142450.411:ERROR:local_storage_context_mojo.cc(706)] Lost connection to database
