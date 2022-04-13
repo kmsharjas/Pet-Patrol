@@ -769,8 +769,70 @@ a:hover {
 .d_price {
   font-size: 26px;
 }
-
 /*========================product detail end========================*/
+
+/*========================about page start========================*/
+.about_bg {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.card.about_card {
+  padding-right: 200px;
+}
+.about_list {
+  list-style: none;
+  padding: 0;
+}
+.about_list li {
+  padding-left: 1.3em;
+}
+.about_list li:before {
+  content: "\f058"; /* FontAwesome Unicode */
+  font-family: FontAwesome;
+  display: inline-block;
+  margin-left: -1.3em; /* same as padding-left set on li */
+  width: 1.3em; /* same as padding-left set on li */
+  color: #f99d1b;
+}
+.about_choose {
+  padding-bottom: 100px;
+}
+.choose_col .media img {
+  background-color: #eae9e8;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+/*========================about page end========================*/
+
+/*========================blog page start========================*/
+.blog_card .card-body h4 {
+  min-height: 65px;
+}
+.recent_form .card-body img {
+  width: 64px;
+  height: 64px;
+}
+.post_card img {
+  border-radius: 30px;
+}
+/*========================blog page end========================*/
+
+/*=========================contact page start=========================*/
+.contact_bg {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.contact_ads_col .media img {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border-radius: 50%;
+  width: 50px;
+}
+.contact_ads_col .media .media-body h4 {
+  font-size: 20px;
+}
+/*=========================contact page end=========================*/
 
 /*===========================media Query===========================*/
 /*------------------- Define mobile styles -------------------*/
@@ -863,6 +925,9 @@ a:hover {
   .lSSlideOuter .lSPager.lSGallery li {
     min-height: 65px;
   }
+  .card.about_card {
+    padding-right: 0px;
+  }
 }
 /*------------------- tablet screens -------------------*/
 @media (min-width: 768px) and (max-width: 991px) {
@@ -953,6 +1018,9 @@ a:hover {
   .order_track_col .media {
     text-align: center;
   }
+  .card.about_card {
+    padding-right: 15px;
+  }
 }
 @media (min-width: 992px) {
 }
@@ -992,6 +1060,9 @@ a:hover {
   }
   .lSSlideOuter .lightSlider > * {
     min-height: 400px;
+  }
+  .card.about_card {
+    padding-right: 30px;
   }
 }
 /*------------------- Large screens-------------------*/

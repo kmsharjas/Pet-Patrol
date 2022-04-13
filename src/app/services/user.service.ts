@@ -43,18 +43,18 @@ export class UserService {
   }
 
   getOtp(mobile: string) {
-    return this.http.post(`${this.baseUrl}/otpgeneration/`, { mobile });
+    return this.http.post(`${this.baseUrl}/otpgeneration`, { mobile });
   }
 
   regOtp(jsn: any) {
-    // console.log(jsn);
+    console.log(jsn);
 
-    return this.http.post(`${this.baseUrl}/customerregister/`, jsn);
+    return this.http.post(`${this.baseUrl}/customerregister`, jsn);
   }
 
   async login(mobile: string, otp: string) {
     const { message, ...user } = await this.http
-      .post<User & { message: string }>(`${this.baseUrl}/checkotp/${mobile}/`, {
+      .post<User & { message: string }>(`${this.baseUrl}/checkotp/${mobile}`, {
         otp,
       })
       .toPromise();
@@ -64,13 +64,10 @@ export class UserService {
   }
 
   async register(jsn) {
-    // console.log(jsn);
+    console.log(jsn);
 
     const { message, ...user } = await this.http
-      .post<User & { message: string }>(
-        `${this.baseUrl}/checkregisterotp/`,
-        jsn
-      )
+      .post<User & { message: string }>(`${this.baseUrl}/checkregisterotp`, jsn)
       .toPromise();
 
     if (message === 'otp is verified') this.setuser(user);

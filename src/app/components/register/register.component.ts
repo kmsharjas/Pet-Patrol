@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
     this.error2 = undefined;
     const data = this.RegisterForm.value;
     // var id = this.RegisterForm.value.id;
-    // console.log(data);
+    console.log(data);
 
     let jsn = {
       first_name: data.firstName,
@@ -46,9 +46,9 @@ export class RegisterComponent implements OnInit {
       mobile: data.number,
       email: data.email,
     };
-    // console.log(jsn);
+    console.log(jsn);
     this.userService.regOtp(jsn).subscribe((res) => {
-      // console.log(res);
+      console.log(res);
       if (res === 'already registered number') {
         this.error2 = 'already registered number';
         // this.error2 = 'This mobile number is already in use.';
@@ -59,11 +59,11 @@ export class RegisterComponent implements OnInit {
   async register() {
     this.message = undefined;
     const { number, OTP } = this.RegisterForm.value;
-    // console.log(number, OTP);
+    console.log(number, OTP);
 
     const data = this.RegisterForm.value;
     // var id = this.RegisterForm.value.id;
-    // console.log(data);
+    console.log(data);
 
     let jsn = {
       first_name: data.firstName,
@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit {
       this.message = await this.userService.register(jsn);
       // if (this.message === 'otp is verified') this.close.emit();
     } catch (error) {
-      // console.log(error);
+      console.log(error);
       this.message = error.error.message;
     }
   }

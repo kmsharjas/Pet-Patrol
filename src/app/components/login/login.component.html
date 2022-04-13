@@ -51,6 +51,7 @@
                 <button type="submit" class="btn btn_login w-100 hd_font font-weight-bold" (click)="getOTP()">Get
                   OTP</button>
               </div>
+              <p class="text-danger">{{error}}</p>
               <div class="form-group mt-4 mt-md-5">
                 <label>OTP *</label>
                 <input type="text " class="form-control" maxlength=6
@@ -63,6 +64,8 @@
                   <label class="form-check-label" for="exampleCheck1">Remember me</label>
                 </div>
               </div> -->
+              <p class="text-danger" *ngIf="message === 'OTP is wrong'">Invalid OTP</p>
+
               <div class="form-group mt-4 mt-md-5">
                 <button type="submit" class="btn btn_login w-100 hd_font font-weight-bold" (click)="login()">Log
                   In</button>

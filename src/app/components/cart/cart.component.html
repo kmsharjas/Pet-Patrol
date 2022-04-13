@@ -56,7 +56,8 @@
     </div>
     <div class="row">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 Cart_col my-3 my-md-3 text-md-right">
-        <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold">Proceed to
+        <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold"
+          routerLink="/checkout">Proceed to
           checkout</button>
       </div>
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 Cart_col my-3 my-md-3">
@@ -72,80 +73,30 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let item of cart$ | async">
                 <th scope="row">
                   <div class="media cart_tb_media">
                     <div class="cat_md_img">
-                      <img class="mr-3" src="img/product3.png" alt="Generic placeholder image">
+                      <img class="mr-3" [src]="item.image" alt="Generic placeholder image">
                     </div>
                     <div class="media-body">
-                      <p class="mb-0">Almo Nature Daily Boosted Sale</p>
+                      <p class="mb-0">{{ item.name }}</p>
+                      <small><span class="">{{ item.offerTitle}}</span></small>
                     </div>
                   </div>
                 </th>
-                <td>$89.00</td>
+                <td>{{ item.price | currency: 'INR'}}</td>
                 <td class="cart_count">
                   <div class="quantity">
-                    <input type="number" min="1" max="99" step="1" value="1">
+                    <input type="number" min="1" max="99" step="1" [value]="item.quantity"
+                      (change)="onChangeQty(item, $event)">
                     <div class="quantity__btn quantity__btn--up"></div>
                     <div class="quantity__btn quantity__btn--down"></div>
                   </div>
                 </td>
-                <td>$178.00</td>
+                <td>{{ item.total | currency: 'INR'}}</td>
                 <td>
-                  <a href="">
-                    <img src="assets/img/cancel.png" class="img-fluid" alt="delete">
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media cart_tb_media">
-                    <div class="cat_md_img">
-                      <img class="mr-3" src="img/product2.png" alt="Generic placeholder image">
-                    </div>
-                    <div class="media-body">
-                      <p class="mb-0">Almo Nature Daily Boosted Sale</p>
-                    </div>
-                  </div>
-                </th>
-                <td>$89.00</td>
-                <td class="cart_count">
-                  <div class="quantity">
-                    <input type="number" min="1" max="99" step="1" value="1">
-                    <div class="quantity__btn quantity__btn--up"></div>
-                    <div class="quantity__btn quantity__btn--down"></div>
-                  </div>
-                </td>
-                <td>$178.00</td>
-                <td>
-                  <a href="">
-                    <img src="assets/img/cancel.png" class="img-fluid" alt="delete">
-                  </a>
-                </td>
-              </tr>
-              <tr class="btm_line">
-                <th scope="row">
-                  <div class="media cart_tb_media">
-                    <div class="cat_md_img">
-                      <img class="mr-3" src="img/product3.png" alt="Generic placeholder image">
-                    </div>
-                    <div class="media-body">
-                      <p class="mb-0">Almo Nature Daily Boosted Sale</p>
-                    </div>
-                  </div>
-                </th>
-                <td>$89.00</td>
-                <td class="cart_count">
-                  <div class="quantity">
-                    <input type="number" min="1" max="99" step="1" value="1">
-                    <div class="quantity__btn quantity__btn--up"></div>
-                    <div class="quantity__btn quantity__btn--down"></div>
-                  </div>
-                </td>
-                <td>$178.00</td>
-                <td>
-                  <a href="">
+                  <a (click)="onRemoveItem(item)">
                     <img src="assets/img/cancel.png" class="img-fluid" alt="delete">
                   </a>
                 </td>
@@ -155,7 +106,8 @@
         </div>
       </div>
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 Cart_col my-3 my-md-3 text-md-right">
-        <button type="button" class="btn btn_banner my-3 my-md-3 hd_font font-weight-bold mr-md-3">Continue
+        <button type="button" class="btn btn_banner my-3 my-md-3 hd_font font-weight-bold mr-md-3"
+          routerLink="../products">Continue
           Shopping</button>
         <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold">Update Cart</button>
       </div>
@@ -175,7 +127,7 @@
         <h6 class="mb-0">Subtotal</h6>
       </div>
       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-3 my-md-3 cart_sub_col text-md-right">
-        <h6 class="mb-0">$534.00</h6>
+        <h6 class="mb-0">{{ subTotal | currency: 'INR' }}</h6>
       </div>
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 cart_sub_col">
         <hr>
@@ -195,13 +147,14 @@
         <h4 class="mb-0 gr_color font-weight-bold">Total</h4>
       </div>
       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-3 my-md-3 cart_sub_col text-md-right">
-        <h4 class="mb-0 gr_color font-weight-bold">$534.00</h4>
+        <h4 class="mb-0 gr_color font-weight-bold">{{ subTotal + 0 | currency: 'INR' }}</h4>
       </div>
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 cart_sub_col">
         <hr>
       </div>
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 Cart_col my-3 my-md-3 text-md-right">
-        <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold">Proceed to
+        <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold"
+          routerLink="/checkout">Proceed to
           checkout</button>
       </div>
     </div>

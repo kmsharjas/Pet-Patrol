@@ -57,12 +57,17 @@
                 <button type="submit" class="btn btn_login w-100 hd_font font-weight-bold" (click)="regOTP()">Get
                   OTP</button>
               </div>
+              <p class="text-danger" *ngIf="error2 === 'already registered number'">This mobile number is already in
+                use.</p>
+
               <div class="form-group mt-4 mt-md-5">
                 <label>OTP</label>
                 <input type="text" class="form-control" maxlength=6
                   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                   formControlName="OTP">
               </div>
+              <p class="text-danger" *ngIf="message === 'OTP is wrong'">Invalid OTP</p>
+
               <div class="form-group mt-4 mt-md-5">
                 <button type="submit" class="btn btn_login w-100 hd_font font-weight-bold" (click)="register()">Create
                   Account</button>

@@ -39,19 +39,19 @@ export class LoginComponent implements OnInit {
   getOTP() {
     this.error = undefined;
     this.message = undefined;
-
+    this.loginForm.controls['otp'].reset();
     const { mobile } = this.loginForm.value;
-    // console.log(mobile);
+    console.log(mobile);
 
     this.userService.getOtp(mobile).subscribe(
       (res) => {
-        // console.log(res);
+        console.log(res);
         if (res === 'no such user') {
           this.error = 'We cannot find an account with this mobile number.';
         }
       },
       (err) => {
-        // console.log(err);
+        console.log(err);
         this.error = 'We cannot find an account with this mobile number';
       }
     );
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
     this.message = undefined;
 
     const { mobile, otp } = this.loginForm.value;
-    // console.log(mobile, otp);
+    console.log(mobile, otp);
 
     try {
       this.message = await this.userService.login(mobile, otp);

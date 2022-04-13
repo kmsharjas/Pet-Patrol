@@ -38,7 +38,7 @@
           </li>
           <li class="nav-item cart_link">
             <a class="nav-link pr-0" routerLink="cart">Cart<img src="assets/img/shopping-cart.png"
-                class="img-fluid mr-3"> <span class="cart_count">0</span></a>
+                class="img-fluid mr-3"> <span class="cart_count">{{ cartQty$ | async }}</span></a>
           </li>
         </ul>
       </div>
@@ -71,83 +71,39 @@
                   <div class="row">
                     <div class="col-12 col-sm-4 col-lg-2">
                       <ul class="nav nav-tabs flex-column mb-3 drop_down_tab custom_tab_menu">
-                        <li class="nav-item">
-                          <a class="nav-link active show font-weight-bold" data-toggle="tab" href="#tab-1">Dog <i
-                              class="fa fa-angle-right ml-2" aria-hidden="true"></i></a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link font-weight-bold" data-toggle="tab" href="#tab-2">Cat <i
-                              class="fa fa-angle-right ml-2" aria-hidden="true"></i></a>
+                        <li *ngFor="let animal of animalCategory; index as i" class="nav-item"
+                          [ngClass]="{active: i===selectedAnimalIndex}">
+                          <a class="nav-link   font-weight-bold" data-toggle="tab" href="#tab-1"
+                            (mouseover)="selectedAnimalIndex = i" [ngClass]="{active: i===selectedAnimalIndex}">
+                            {{animal.animal}}
+                            <i class="fa fa-angle-right ml-2" aria-hidden="true"></i>
+                          </a>
                         </li>
                       </ul>
                     </div>
                     <div class="col-12 col-sm-8 col-lg-10">
                       <div class="tab-content custom_tab_content">
-                        <div class="tab-pane active show fade" id="tab-1">
+                        <div *ngFor="let animal of animalCategory; index as i" class="tab-pane show fade"
+                          [ngClass]="{active: i===selectedAnimalIndex}">
                           <div class="row">
-                            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
+                            <div *ngFor="let category of animal.items"
+                              class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
                               <a href="">
-                                <p class="font-weight-bold mb-2">Food</p>
+                                <p class="font-weight-bold mb-2">{{ category.service }}</p>
                               </a>
                               <hr>
-                              <a class="dropdown-item" href="#"><i class="fa fa-paw mr-2"
-                                  aria-hidden="true"></i>Adult</a>
-                              <a class="dropdown-item" href="#"><i class="fa fa-paw mr-2"
-                                  aria-hidden="true"></i>Starter</a>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
-                              <a href="">
-                                <p class="font-weight-bold mb-2">Treats</p>
+                              <a *ngFor="let sub of category.items1" class="dropdown-item"><i class="fa fa-paw mr-2"
+                                  aria-hidden="true"></i>
+                                {{sub.subcategory}}
                               </a>
-                              <hr>
-                              <a class="dropdown-item" href="#"><i class="fa fa-paw mr-2" aria-hidden="true"></i>Calcium
-                                Bones</a>
-                              <a class="dropdown-item" href="#"><i class="fa fa-paw mr-2" aria-hidden="true"></i>Chew
-                                Sticks</a>
-                              <a class="dropdown-item" href="#"><i class="fa fa-paw mr-2" aria-hidden="true"></i>Pressed
-                                Bones</a>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
-                              <a href="">
-                                <p class="font-weight-bold mb-2">Biscuits</p>
-                              </a>
-                              <hr>
-                              <a class="dropdown-item" href="#"><i class="fa fa-paw mr-2"
-                                  aria-hidden="true"></i>Vegetarian Flavour</a>
-                              <a class="dropdown-item" href="#"><i class="fa fa-paw mr-2" aria-hidden="true"></i>Chicken
-                                Flavour</a>
-                              <a class="dropdown-item" href="#"><i class="fa fa-paw mr-2" aria-hidden="true"></i>Mixed
-                                Flavour</a>
                             </div>
                             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 d-none d-lg-block">
                               <a href=""> <img class="d-block w-100" src="assets/img/drop.jpg" class="img-fluid"
                                   alt="drop down image"></a>
                             </div>
                           </div>
-
                         </div>
-                        <div class="tab-pane fade" id="tab-2">
-                          <div class="row">
-                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-                              <a href="">
-                                <p class="font-weight-bold mb-2">Food</p>
-                              </a>
-                              <hr>
-                              <a class="dropdown-item" href="#"><i class="fa fa-paw mr-2" aria-hidden="true"></i>Cat
-                                food</a>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 d-md-none">
 
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 d-md-none">
-
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 d-none d-lg-block">
-                              <a href=""> <img class="d-block w-100" src="assets/img/drop2.jpg" class="img-fluid"
-                                  alt="drop down image"></a>
-                            </div>
-                          </div>
-                        </div>
 
                       </div>
                     </div>
@@ -173,8 +129,9 @@
           <a class="nav-link" href="#">Sign In</a>
         </li>
         <li class="nav-item cart_link d_none_mob">
-          <a class="nav-link" href="cart.html"><img src="assets/img/shopping-cart.png" class="img-fluid mr-3"> <span
-              class="cart_count">0</span></a>
+          <a class="nav-link" href="cart.html">
+            <img src="assets/img/shopping-cart.png" class="img-fluid mr-3">
+            <span class="cart_count">{{ cartQty$ | async }}</span></a>
         </li>
       </ul>
     </div>

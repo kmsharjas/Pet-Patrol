@@ -22,52 +22,54 @@
           </li>
         </ul>
       </div>
-
     </div>
     <div class="sub_bnrt_img">
-      <img src="assets/img/cat&dog.png" class="img-fluid" alt="inner banner image">
+      <img src="assets/img/cat&dog.png" class="img-fluid" alt="inner banner image" />
     </div>
   </div>
-  <img src="assets/img/inner-bnr-bottom.png" class="img-fluid comm_bnr_shape" width="100%" alt="shape">
+  <img src="assets/img/inner-bnr-bottom.png" class="img-fluid comm_bnr_shape" width="100%" alt="shape" />
 </section>
 <!-- ----------------------------inner banner end---------------------------- -->
 <!--------------------------- product  start --------------------------->
-<section class="product_detail_bg">
+<section *ngIf="product$ | async as product" class="product_detail_bg">
   <div class="container">
     <div class="row detail-row mt-2 align-items-center">
-      <div class="col-xl-5 col-lg-5 col-md-12  col-sm-12 col-12 my-3 my-md-3">
+      <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 my-3 my-md-3">
         <div class="detail-pro">
           <ul id="imageGallery">
-            <li data-thumb="assets/img/product1.png" data-src="assets/img/product1.png">
-              <img src="assets/img/product1.png" class="" width="100%" />
-            </li>
-            <li data-thumb="assets/img/pd-detail1.jpg" data-src="assets/img/pd-detail1.jpg">
-              <img src="assets/img/pd-detail1.jpg" class="" width="100%" />
-            </li>
-            <li data-thumb="assets/img/pd-detail2.jpg" data-src="assets/img/pd-detail2.jpg">
-              <img src="assets/img/pd-detail2.jpg" class="" width="100%" />
+            <!-- <li *ngFor="let img of product.image" [attr.data-thumb]="img.images" [attr.data-src]="img.images">
+              <img [src]="img.images" class="" width="100%" />
+            </li> -->
+            <li *ngIf="product.image[0] as img" [attr.data-thumb]="img.images" [attr.data-src]="img.images">
+              <img [src]="img.images" class="" width="100%" />
             </li>
           </ul>
         </div>
       </div>
-      <div class="col-xl-7 col-lg-7 col-md-12  col-sm-12 col-12 my-3 my-md-3">
-        <p class="mb-0 gr_color font-weight-bold">Cat Food</p>
-        <h3 class="font-weight-bold hd_font">Norwegian Forest Cat</h3>
-        <p class="mb-0 d_price"><small><span class="text-muted mr-2"><s>$13.00</s></span></small> <span
-            class="text-danger font-weight-bold">$12.00</span></p>
-        <p>Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur duis deserunt mollit
-          dolore cillum minim</p>
+      <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 my-3 my-md-3">
+        <p class="mb-0 gr_color font-weight-bold">{{ product.animalCategory }}</p>
+        <h3 class="font-weight-bold hd_font">{{ product.name }}</h3>
+        <p class="mb-0 d_price">
+          <small><span class="text-muted mr-2"><s>{{ product.actualPrice | currency: 'INR' }}</s></span></small>
+          <span class="text-danger font-weight-bold">{{ product.price | currency: 'INR' }}</span>
+        </p>
+        <p>
+          {{ product.description }}
+        </p>
         <div class="d-flex">
           <div class="quantity my-3">
-            <input type="number" min="1" max="99" step="1" value="1">
+            <input type="number" min="1" max="99" step="1" value="1" #qty />
             <div class="quantity__btn quantity__btn--up"></div>
             <div class="quantity__btn quantity__btn--down"></div>
           </div>
-          <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold ml-3">Add To
-            Cart</button>
+          <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold ml-3"
+            (click)="addToCart(product, +qty.value)">
+            Add To Cart
+          </button>
         </div>
         <a href="">
-          <p class="yellow_color font-weight-bold"><i class="fa fa-heart-o mr-2" aria-hidden="true"></i>Add to wishlist
+          <p class="yellow_color font-weight-bold">
+            <i class="fa fa-heart-o mr-2" aria-hidden="true"></i>Add to wishlist
           </p>
         </a>
       </div>
@@ -78,18 +80,24 @@
 <!-- --------------------related products start-------------------- -->
 <section class="product_detail_bg">
   <div class="container">
-    <h3 class="text-center hd_font cm_hd font-weight-bold mb-5">Related Products</h3>
+    <h3 class="text-center hd_font cm_hd font-weight-bold mb-5">
+      Related Products
+    </h3>
     <div class="row">
       <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12product_col my-3 my-md-3">
         <div class="card product_card">
           <div class="pd_imag">
-            <img src="assets/img/product1.png" class="img-fluid product_image" alt="product image">
+            <img src="assets/img/product1.png" class="img-fluid product_image" alt="product image" />
           </div>
           <div class="card-body prduct_body text-center">
             <p class="mb-0 font-weight-bold shop_ht">Norwegian Forest Cat</p>
-            <p class="mb-0"><small><span class="text-muted mr-2"><s>$13.00</s></span></small> <span
-                class="text-danger font-weight-bold">$12.00</span></p>
-            <button type="button" class="btn btn_shop_now my-3 my-md-3">Shop Now</button>
+            <p class="mb-0">
+              <small><span class="text-muted mr-2"><s>$13.00</s></span></small>
+              <span class="text-danger font-weight-bold">$12.00</span>
+            </p>
+            <button type="button" class="btn btn_shop_now my-3 my-md-3">
+              Shop Now
+            </button>
           </div>
         </div>
       </div>
@@ -97,13 +105,17 @@
         <div class="card product_card">
           <div class="pd_imag">
             <span class="pd_new_tag">New</span>
-            <img src="assets/img/product2.png" class="img-fluid product_image" alt="product image">
+            <img src="assets/img/product2.png" class="img-fluid product_image" alt="product image" />
           </div>
           <div class="card-body prduct_body text-center">
             <p class="mb-0 font-weight-bold shop_ht">Pet Food Variable</p>
-            <p class="mb-0"><small><span class="text-muted mr-2"><s>$13.00</s></span></small> <span
-                class="text-danger font-weight-bold">$18.00</span></p>
-            <button type="button" class="btn btn_shop_now my-3 my-md-3">Shop Now</button>
+            <p class="mb-0">
+              <small><span class="text-muted mr-2"><s>$13.00</s></span></small>
+              <span class="text-danger font-weight-bold">$18.00</span>
+            </p>
+            <button type="button" class="btn btn_shop_now my-3 my-md-3">
+              Shop Now
+            </button>
           </div>
         </div>
       </div>
@@ -111,26 +123,36 @@
         <div class="card product_card">
           <div class="pd_imag">
             <span class="pd_off_tag">20% Off</span>
-            <img src="assets/img/product3.png" class="img-fluid product_image" alt="product image">
+            <img src="assets/img/product3.png" class="img-fluid product_image" alt="product image" />
           </div>
           <div class="card-body prduct_body text-center">
-            <p class="mb-0 font-weight-bold shop_ht">Almo Nature Daily Boosted Sale</p>
-            <p class="mb-0"><small><span class="text-muted mr-2"><s>$13.00</s></span></small> <span
-                class="text-danger font-weight-bold">$20.00</span></p>
-            <button type="button" class="btn btn_shop_now my-3 my-md-3">Shop Now</button>
+            <p class="mb-0 font-weight-bold shop_ht">
+              Almo Nature Daily Boosted Sale
+            </p>
+            <p class="mb-0">
+              <small><span class="text-muted mr-2"><s>$13.00</s></span></small>
+              <span class="text-danger font-weight-bold">$20.00</span>
+            </p>
+            <button type="button" class="btn btn_shop_now my-3 my-md-3">
+              Shop Now
+            </button>
           </div>
         </div>
       </div>
       <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12product_col my-3 my-md-3">
         <div class="card product_card">
           <div class="pd_imag">
-            <img src="assets/img/product4.png" class="img-fluid product_image" alt="product image">
+            <img src="assets/img/product4.png" class="img-fluid product_image" alt="product image" />
           </div>
           <div class="card-body prduct_body text-center">
             <p class="mb-0 font-weight-bold shop_ht">Rocco Classic</p>
-            <p class="mb-0"><small><span class="text-muted mr-2"><s>$13.00</s></span></small> <span
-                class="text-danger font-weight-bold">$25.00</span></p>
-            <button type="button" class="btn btn_shop_now my-3 my-md-3">Shop Now</button>
+            <p class="mb-0">
+              <small><span class="text-muted mr-2"><s>$13.00</s></span></small>
+              <span class="text-danger font-weight-bold">$25.00</span>
+            </p>
+            <button type="button" class="btn btn_shop_now my-3 my-md-3">
+              Shop Now
+            </button>
           </div>
         </div>
       </div>
