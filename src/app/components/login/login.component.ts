@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -14,7 +15,11 @@ export class LoginComponent implements OnInit {
   message?: string;
   error?: string;
   error2?: string;
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(
+    private fb: FormBuilder,
+    private rout: Router,
+    private userService: UserService
+  ) {
     //login form
     this.loginForm = this.fb.group({
       mobile: [null, Validators.required],
@@ -65,6 +70,7 @@ export class LoginComponent implements OnInit {
 
     try {
       this.message = await this.userService.login(mobile, otp);
+      if (this.message === 'otp is verified') this.rout.navigate(['/account']);
       // if (this.message === 'otp is verified') this.close.emit();
     } catch (error) {
       console.log(error);

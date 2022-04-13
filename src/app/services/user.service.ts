@@ -92,6 +92,7 @@ export class UserService {
 
   logout() {
     localStorage.removeItem('user');
+    localStorage.removeItem('cart-item');
     this.user$.next(null);
   }
 }

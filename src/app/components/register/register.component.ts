@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -15,7 +16,11 @@ export class RegisterComponent implements OnInit {
   error?: string;
   error2?: string;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private rout: Router
+  ) {
     //register form
     this.RegisterForm = this.fb.group({
       id: [null],
@@ -74,6 +79,7 @@ export class RegisterComponent implements OnInit {
     };
     try {
       this.message = await this.userService.register(jsn);
+      if (this.message === 'otp is verified') this.rout.navigate(['/account']);
       // if (this.message === 'otp is verified') this.close.emit();
     } catch (error) {
       console.log(error);

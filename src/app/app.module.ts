@@ -18,6 +18,12 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AccountComponent } from './components/account/account.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { CareerComponent } from './components/career/career.component';
+import { BlogsComponent } from './components/blogs/blogs.component';
+import { BlogComponent } from './components/blog/blog.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { TestimonialComponent } from './components/testimonial/testimonial.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +41,12 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     CheckoutComponent,
     AccountComponent,
     ProductDetailComponent,
+    CareerComponent,
+    BlogsComponent,
+    BlogComponent,
+    AboutComponent,
+    ContactComponent,
+    TestimonialComponent,
   ],
   imports: [
     BrowserModule,
