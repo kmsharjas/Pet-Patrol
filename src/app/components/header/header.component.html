@@ -16,7 +16,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><img src="assets/img/call.png" class="img-fluid mr-3">+91-000-000-0000</a>
+            <a class="nav-link"><img src="assets/img/call.png" class="img-fluid mr-3">+91-904-847-7007</a>
           </li>
         </ul>
       </div>
@@ -75,7 +75,7 @@
                       <ul class="nav nav-tabs flex-column mb-3 drop_down_tab custom_tab_menu">
                         <li *ngFor="let animal of animalCategory; index as i" class="nav-item"
                           [ngClass]="{active: i===selectedAnimalIndex}">
-                          <a class="nav-link   font-weight-bold" data-toggle="tab" href="#tab-1"
+                          <a class="nav-link   font-weight-bold" data-toggle="tab" routerLink="products"
                             (mouseover)="selectedAnimalIndex = i" [ngClass]="{active: i===selectedAnimalIndex}">
                             {{animal.animal}}
                             <i class="fa fa-angle-right ml-2" aria-hidden="true"></i>
@@ -90,17 +90,17 @@
                           <div class="row">
                             <div *ngFor="let category of animal.items"
                               class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
-                              <a href="">
+                              <a routerLink="products">
                                 <p class="font-weight-bold mb-2">{{ category.service }}</p>
                               </a>
                               <hr>
-                              <a *ngFor="let sub of category.items1" class="dropdown-item"><i class="fa fa-paw mr-2"
-                                  aria-hidden="true"></i>
+                              <a routerLink="products" *ngFor="let sub of category.items1" class="dropdown-item"><i
+                                  class="fa fa-paw mr-2" aria-hidden="true"></i>
                                 {{sub.subcategory}}
                               </a>
                             </div>
                             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 d-none d-lg-block">
-                              <a href=""> <img class="d-block w-100" src="assets/img/drop.jpg" class="img-fluid"
+                              <a> <img class="d-block w-100" src="assets/img/drop.jpg" class="img-fluid"
                                   alt="drop down image"></a>
                             </div>
                           </div>
@@ -128,7 +128,14 @@
           <a class="nav-link" routerLink="career">Career</a>
         </li>
         <li class="nav-item d_none_mob">
-          <a class="nav-link" href="#">Sign In</a>
+          <a *ngIf="!(user$ | async)" class="nav-link pl-0" routerLink="/login">
+            <img src="assets/img/sgin-in.png" class="img-fluid mr-3">
+            Sign In
+          </a>
+          <a *ngIf="user$ | async as user" class="nav-link pl-0" routerLink="/account">
+            <img src="assets/img/sgin-in.png" class="img-fluid mr-3">
+            {{ user.first_name }}
+          </a>
         </li>
         <li class="nav-item cart_link d_none_mob">
           <a class="nav-link" href="cart.html">

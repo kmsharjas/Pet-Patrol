@@ -31,6 +31,8 @@ export interface Payment {
 
 export interface OrderItem {
   id?: number;
+  name?: string;
+  image?: string;
   quantity: number;
   unit_price: number;
   total_price: number;

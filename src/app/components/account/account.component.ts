@@ -62,16 +62,16 @@ export class AccountComponent implements OnInit {
     this.profileForm.get('mobile').disable();
   }
 
-  // toggleTrack(order?: Order) {
-  //   if (order) {
-  //     this.selection = 'track';
-  //     this.orderTrack = order;
-  //     // this.showReview(this.orderTrack);
-  //   } else {
-  //     this.selection = 'order';
-  //     this.orderTrack = null;
-  //   }
-  // }
+  toggleTrack(order?: Order) {
+    if (order) {
+      this.selection = 'track';
+      this.orderTrack = order;
+      // this.showReview(this.orderTrack);
+    } else {
+      this.selection = 'order';
+      this.orderTrack = null;
+    }
+  }
 
   logout() {
     this.userService.logout();

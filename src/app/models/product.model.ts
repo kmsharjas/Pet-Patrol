@@ -6,6 +6,7 @@ export interface Product {
   actualPrice?: number;
   countInstock: number;
   animalCategory: number;
+  animalCategory_name?: string;
   serviceCategory: number;
   serviceSubcategory: number;
   included_gst: number;

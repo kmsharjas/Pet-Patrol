@@ -1,1 +1,50 @@
-<p>myorders works!</p>
+<ul class="list-group mt-3 mb-3" *ngFor="let order of orders$ | async">
+  <li class="list-group-item d-md-flex align-items-center justify-content-between head_bg_order">
+
+    <p class="mb-0 font-weight-bold my-2 my-md-0">
+      ORDER PLACED: {{ order.payment.created_at | date: "shortDate" }}
+    </p>
+
+    <p class="mb-0 font-weight-bold my-2 my-md-0">
+      TOTAL: {{ order.total_amount | currency: "INR" }}
+    </p>
+
+    <p class="mb-0 font-weight-bold my-2 my-md-0">
+      ORDER #:
+      {{ order.payment.payment_id.replace("order_", "") | uppercase }}
+    </p>
+    <p class="mb-0 font-weight-bold my-2 my-md-0 text-danger" *ngIf="order.payment.cancelled_at">
+      ORDER CANCELLED
+    </p>
+    <!-- <button class="btn btn_red_order my-2 my-md-0" *ngIf="checkExpry(order)" (click)="cancelOrder(order)">
+      Cancel Order
+    </button>
+    <button class="btn my-2 my-md-0" (click)="onTrack(order)" *ngIf="order.order_status !== 'cancelled'">
+      Track Order
+    </button> -->
+  </li>
+  <li class="list-group-item my-0">
+    <div class="table-responsive">
+      <table class="table custom_table">
+        <tbody class="table_bdy" *ngFor="let item of order.items">
+          <tr>
+            <th scope="row">
+              <div class="media cart_tb_media">
+                <div class="cat_md_img">
+                  <img class="mr-3" [src]="item.image" alt="Generic placeholder image">
+                </div>
+                <div class="media-body">
+                  <p class="mb-0">{{ item.name }}</p>
+                </div>
+              </div>
+            </th>
+            <td class="border-0 align-middle">{{ item.unit_price | currency: 'INR'}}</td>
+            <td class="border-0 align-middle">{{ item.quantity }}</td>
+            <td class="font-weight-bold align-middle total_table_prc border-0">{{ item.total_price | currency: 'INR'}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </li>
+</ul>
