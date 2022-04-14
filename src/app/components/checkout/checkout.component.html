@@ -58,92 +58,9 @@
       <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 checkout_col_left my-3 my-md-3">
         <div class="card_personal">
           <h4 class="hd_font font-weight-bold mb-4">Billing details</h4>
-          <form>
-            <div class="row">
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
-                <div class="form-group">
-                  <label class="font-weight-bold">Flat, House no., Building, Company, Apartment</label>
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
-                <div class="form-group">
-                  <label class="font-weight-bold">Landmark</label>
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
-                <div class="form-group">
-                  <label class="font-weight-bold">Mobile No. *</label>
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
-                <div class="form-group">
-                  <label class="font-weight-bold">Email *</label>
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
-                <div class="form-group">
-                  <label class="font-weight-bold">Town/City</label>
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
-                <div class="form-group">
-                  <label class="font-weight-bold">Pin Code *</label>
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
-                <div class="form-group">
-                  <label class="font-weight-bold">State</label>
-                  <select class="form-control">
-                    <option>New York</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
-                <div class="form-group">
-                  <label class="font-weight-bold">Country</label>
-                  <select class="form-control">
-                    <option>New York</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
-                <div class="form-group">
-                  <label class="font-weight-bold">Address Type</label>
-                  <select class="form-control">
-                    <option>New York</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                  <label class="form-check-label hd_font font-weight-bold" for="defaultCheck1">
-                    Ship to a different address?
-                  </label>
-                </div>
-              </div>
-            </div>
-          </form>
+          <app-address-form #addressForm *ngIf="formValues$ | async as formValues" [values]="formValues"
+            [showSubmit]="false">
+          </app-address-form>
         </div>
 
       </div>
@@ -152,44 +69,28 @@
         <div class="check_side_card card border-0">
           <div class="card-body">
             <div class="row">
-              <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 my-3 my-md-3 order_col">
-                <p class="mb-0">Almo Nature Daily Boosted Sale X 2</p>
-              </div>
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-3 my-md-3 order_col text-md-right">
-                <p class="mb-0">₹267.00</p>
-              </div>
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <hr>
-              </div>
-              <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 my-3 my-md-3 order_col">
-                <p class="mb-0">Almo Nature Daily Boosted Sale X 2</p>
-              </div>
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-3 my-md-3 order_col text-md-right">
-                <p class="mb-0">₹267.00</p>
-              </div>
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <hr>
-              </div>
-              <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 my-3 my-md-3 order_col">
-                <p class="mb-0">Almo Nature Daily Boosted Sale X 2</p>
-              </div>
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-3 my-md-3 order_col text-md-right">
-                <p class="mb-0">₹267.00</p>
-              </div>
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <hr>
-              </div>
+              <ng-container *ngFor="let item of cartItems; index as i">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 my-3 my-md-3 order_col">
+                  <p class="mb-0">{{item.name}} X {{item.quantity}}</p>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-3 my-md-3 order_col text-md-right">
+                  <p class="mb-0"> {{ item.total | currency: 'INR' }}</p>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <hr>
+                </div>
+              </ng-container>
               <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 my-3 my-md-3 order_col">
                 <p class="mb-0 font-weight-bold">Sub total</p>
               </div>
               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-3 my-md-3 order_col text-md-right">
-                <p class="mb-0 font-weight-bold">₹267.00</p>
+                <p class="mb-0 font-weight-bold">{{ TotPrice| currency: 'INR' }}</p>
               </div>
               <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 my-3 my-md-3 order_col">
-                <h4 class="mb-0 font-weight-bold gr_color">Sub total</h4>
+                <h4 class="mb-0 font-weight-bold gr_color">Total</h4>
               </div>
               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-3 my-md-3 order_col text-md-right">
-                <h4 class="mb-0 font-weight-bold gr_color">₹267.00</h4>
+                <h4 class="mb-0 font-weight-bold gr_color">{{ grandTotal | currency: 'INR' }}</h4>
               </div>
             </div>
           </div>
@@ -200,7 +101,8 @@
             <div class="row">
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 my-3 my-md-3 order_col">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="COD"
+                    [(ngModel)]="paymentMethod">
                   <label class="form-check-label font-weight-bold" for="exampleRadios1">
                     Cash on delivery
                   </label>
@@ -212,7 +114,8 @@
               </div>
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 my-3 my-md-3 order_col">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Online"
+                    [(ngModel)]="paymentMethod">
                   <label class="form-check-label font-weight-bold" for="exampleRadios2">
                     Credit or Debit Card
                   </label>
@@ -222,16 +125,17 @@
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <hr>
               </div>
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 my-3 my-md-3 order_col">
+              <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 my-3 my-md-3 order_col">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="Online">
                   <label class="form-check-label font-weight-bold" for="exampleRadios3">
                     <img src="assets/img/pay-pal.png" class="img-fluid" alt="card">
                   </label>
                 </div>
-              </div>
+              </div> -->
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 my-3 my-md-3">
-                <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold">Place
+                <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold"
+                  (click)="placeOrder()">Place
                   order</button>
               </div>
             </div>

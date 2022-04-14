@@ -3,91 +3,39 @@
   <div class="container">
     <div class="row banner_row align-items-center">
       <div class="col-xl-5 col-lg-10 col-md-12 col-sm-12 col-12 banner_text_col my-3 my-md-3">
-        <div class="owl-carousel owl-theme owl-loaded owl-drag" id="bannerslide">
+        <owl-carousel-o [options]="customOptions" id="testimonial">
+          <ng-container>
+            <ng-template carouselSlide>
+              <div class="item">
+                <div class="cover">
+                  <div class="header-content">
+                    <div class="line"></div>
+                    <h4 class="text-white">We Make your pets happy</h4>
+                    <h1 class="hd_font text-white">Find the best products for your pet</h1>
+                    <a type="button" routerLink="products" class="btn btn_banner my-3 my-md-3">Shop Now</a>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
 
+          </ng-container>
+          <ng-container>
+            <ng-template carouselSlide>
+              <div class="item">
+                <div class="cover">
+                  <div class="header-content">
+                    <div class="line"></div>
+                    <h4 class="text-white">We Make your pets happy</h4>
+                    <h1 class="hd_font text-white">Find the best products for your pet</h1>
+                    <a type="button" routerLink="products" class="btn btn_banner my-3 my-md-3">Shop Now</a>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
 
-          <div class="owl-stage-outer">
-            <div class="owl-stage"
-              style="transform: translate3d(-1777px, 0px, 0px); transition: all 0.25s ease 0s; width: 3555px;">
-              <div class="owl-item cloned" style="width: 582.5px; margin-right: 10px;">
-                <div class="item">
-                  <div class="cover">
-                    <div class="header-content">
-                      <div class="line"></div>
-                      <h4 class="text-white">We Make your pets happy</h4>
-                      <h1 class="hd_font text-white">Find the best products for your pet</h1>
-                      <button type="button" class="btn btn_banner my-3 my-md-3" routerLink="products">Shop Now</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="owl-item cloned" style="width: 582.5px; margin-right: 10px;">
-                <div class="item">
-                  <div class="cover">
-                    <div class="header-content">
-                      <div class="line animated bounceInLeft"></div>
-                      <h4 class="text-white">We Make your pets happy</h4>
-                      <h1 class="hd_font text-white">Find the best products for your pet</h1>
-                      <button type="button" class="btn btn_banner my-3 my-md-3" routerLink="products">Shop Now</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="owl-item" style="width: 582.5px; margin-right: 10px;">
-                <div class="item">
-                  <div class="cover">
-                    <div class="header-content">
-                      <div class="line"></div>
-                      <h4 class="text-white">We Make your pets happy</h4>
-                      <h1 class="hd_font text-white">Find the best products for your pet</h1>
-                      <button type="button" class="btn btn_banner my-3 my-md-3" routerLink="products">Shop Now</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="owl-item active" style="width: 582.5px; margin-right: 10px;">
-                <div class="item">
-                  <div class="cover">
-                    <div class="header-content">
-                      <div class="line animated bounceInLeft"></div>
-                      <h4 class="text-white">We Make your pets happy</h4>
-                      <h1 class="hd_font text-white">Find the best products for your pet</h1>
-                      <button type="button" class="btn btn_banner my-3 my-md-3" routerLink="products">Shop Now</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="owl-item cloned" style="width: 582.5px; margin-right: 10px;">
-                <div class="item">
-                  <div class="cover">
-                    <div class="header-content">
-                      <div class="line"></div>
-                      <h4 class="text-white">We Make your pets happy</h4>
-                      <h1 class="hd_font text-white">Find the best products for your pet</h1>
-                      <button type="button" class="btn btn_banner my-3 my-md-3" routerLink="products">Shop Now</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="owl-item cloned" style="width: 582.5px; margin-right: 10px;">
-                <div class="item">
-                  <div class="cover">
-                    <div class="header-content">
-                      <div class="line animated bounceInLeft"></div>
-                      <h4 class="text-white">We Make your pets happy</h4>
-                      <h1 class="hd_font text-white">Find the best products for your pet</h1>
-                      <button type="button" class="btn btn_banner my-3 my-md-3" routerLink="products">Shop Now</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span
-                aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span
-                aria-label="Next">›</span></button></div>
-          <div class="owl-dots disabled"></div>
-        </div>
+          </ng-container>
+
+        </owl-carousel-o>
       </div>
     </div>
     <div class="banner_img_col">

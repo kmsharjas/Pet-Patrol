@@ -26,10 +26,10 @@
   <title>PetPatrol</title>
   <base href="/">
 </head>
-<app-root></app-root>
+
 
 <body>
-
+  <app-root></app-root>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -43,56 +43,24 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
-  <script src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
-
-  <script>
+  <!-- <script src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script> -->
+  <!-- <script>
     AOS.init({
       duration: 1200,
     })
-  </script>
-
-
-  <!-- count start -->
-  <script>
-    $('.quantity').each(function () {
-      var spinner = $(this),
-        input = spinner.find('input[type="number"]'),
-        btnUp = spinner.find('.quantity__btn--up'),
-        btnDown = spinner.find('.quantity__btn--down'),
-        min = input.attr('min'),
-        max = input.attr('max');
-      btnUp.click(function () {
-        var oldValue = parseFloat(input.val());
-        if (oldValue >= max) {
-          var newVal = oldValue;
-        } else {
-          var newVal = oldValue + 1;
-        }
-        spinner.find("input").val(newVal);
-        spinner.find("input").trigger("change");
-      });
-      btnDown.click(function () {
-        var oldValue = parseFloat(input.val());
-        if (oldValue <= min) {
-          var newVal = oldValue;
-        } else {
-          var newVal = oldValue - 1;
-        }
-        spinner.find("input").val(newVal);
-        spinner.find("input").trigger("change");
-      });
+  </script> -->
+  <!-- <script>
+    $('li.dropdown.mega-dropdown a').on('click', function (event) {
+      $(this).parent().toggleClass('open');
     });
-  </script>
-  <!-- count end -->
-
+  </script> -->
   <script>
-    $('.custom_tab_menu a').hover(function (e) {
+    $('.custom_tab_menu .nav-item .nav-link').hover(function (e) {
       e.preventDefault()
       $(this).tab('show')
     })
   </script>
-
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     var owlbrand = $('#bannerslide');
     owlbrand.owlCarousel({
       items: 1,
@@ -117,6 +85,39 @@
           items: 1
         }
       }
+    });
+  </script> -->
+  <script type="text/javascript">
+    var owltestimonial = $('#testimonial');
+    owltestimonial.owlCarousel({
+      items: 1,
+      nav: false,
+      loop: true,
+      margin: 30,
+      autoplay: true,
+      autoplayTimeout: 3000,
+      autoplayHoverPause: true,
+      pagination: false,
+      singleItem: false,
+      dots: false,
+      responsiveClass: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 1
+        },
+        1000: {
+          items: 1
+        }
+      }
+    });
+    $("#next-testi").click(function () {
+      owltestimonial.trigger('next.owl.carousel');
+    })
+    $("#prev-testi").click(function () {
+      owltestimonial.trigger('prev.owl.carousel');
     });
   </script>
   <script type="text/javascript">
@@ -152,9 +153,6 @@
       owlCategories.trigger('prev.owl.carousel');
     });
   </script>
-
-
-
 </body>
 
 </html>

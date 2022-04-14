@@ -24,6 +24,13 @@ import { BlogComponent } from './components/blog/blog.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { TestimonialComponent } from './components/testimonial/testimonial.component';
+import { AddressFormComponent } from './components/address-form/address-form.component';
+import { OrderResponseComponent } from './components/order-response/order-response.component';
+import { AddressComponent } from './components/address/address.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MyordersComponent } from './components/myorders/myorders.component';
 
 @NgModule({
   declarations: [
@@ -47,10 +54,18 @@ import { TestimonialComponent } from './components/testimonial/testimonial.compo
     AboutComponent,
     ContactComponent,
     TestimonialComponent,
+    AddressFormComponent,
+    OrderResponseComponent,
+    AddressComponent,
+    MyordersComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    CarouselModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

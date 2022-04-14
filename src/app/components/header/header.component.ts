@@ -7,13 +7,18 @@ import {
   ServiceSubCategory,
 } from 'src/app/models/navCategory.model';
 import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user.model';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  isOpen = false;
+
   cartQty$: Observable<number>;
+  user$: Observable<User> = this.userService.user$;
 
   animalCategory$: Observable<AnimalCategory[]>;
 
@@ -22,6 +27,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private mainservices: MainService,
+    private userService: UserService,
     private cartService: CartService
   ) {}
 
@@ -32,7 +38,7 @@ export class HeaderComponent implements OnInit {
     });
 
     this.cartQty$ = this.cartService.cartItems$.pipe(
-      map((items) => items.reduce((acc, item) => acc + item.quantity, 0))
+      map((items) => items?.reduce((acc, item) => acc + item.quantity, 0) ?? 0)
     );
 
     // this.cartQty$.subscribe(console.log);

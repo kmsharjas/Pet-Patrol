@@ -1,0 +1,14 @@
+.address_card {
+  flex-direction: row;
+  align-items: center;
+}
+.actions {
+  padding: 24px;
+}
+
+.primary-label {
+  background: #007bff;
+  padding: 8px 12px;
+  border-radius: 3px;
+  color: white;
+}

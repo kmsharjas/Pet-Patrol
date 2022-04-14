@@ -1,0 +1,110 @@
+<div class="acc_card card mb-3">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 order_adress_col">
+        <div class="card border-0 mb-3">
+          <div class="card-body">
+            <button type="button" class="btn btn_yellow_fm my-3 my-md-3" data-toggle="modal"
+              data-target="#add-new-address">
+              Add A New Address
+            </button>
+          </div>
+        </div>
+        <div class="card mb-3 border-0 address_card" *ngFor="let address of address$ | async">
+          <div class="card-body">
+            <!-- <h4 class="font-weight-bold">Arun Ram</h4> -->
+            <p class="mb-0">{{ address.mobile }}</p>
+            <p class="w-75 text-secondary">
+              <small>
+                {{
+                address.flat_no +
+                " " +
+                address.landmark +
+                " " +
+                address.city +
+                " " +
+                address.pincode +
+                " " +
+                address.state_name +
+                " " +
+                address.country_name
+                }}
+              </small>
+            </p>
+            <a class="mr-2 gr_color font-weight-bold" data-toggle="modal" data-target="#add-new-address"
+              (click)="onEdit(address)"><i class="fa fa-pencil-square-o mr-1" aria-hidden="true"></i>
+              Edit</a>
+            <a class="text-danger font-weight-bold" (click)="onDelete(address)"><i class="fa fa-trash-o mr-1"
+                aria-hidden="true"></i>Remove</a>
+          </div>
+          <div class="actions">
+            <span class="btn btn-success" *ngIf="address.isDefault">Primary</span>
+            <button class="btn btn-outline-success" *ngIf="!address.isDefault" (click)="setDefault(address)">
+              Set Default
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- add new adress modal -->
+<div class="modal fade" id="add-new-address" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title hd_font font-weight-bold" id="exampleModalLongTitle">
+          Add A New Address
+        </h5>
+        <button #closeBtn type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <form>
+          <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 modal_col">
+              <div class="form-group">
+                <label class="font-weight-bold">First Name</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 modal_col">
+              <div class="form-group">
+                <label class="font-weight-bold">Last Name</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 modal_col">
+              <div class="form-group">
+                <label class="font-weight-bold">Email</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 modal_col">
+              <div class="form-group">
+                <label class="font-weight-bold">Mobile number</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-xl-12 col-md-lg-12 col-md-12 col-sm-12 col-12 modal_col">
+              <div class="form-group">
+                <label class="font-weight-bold">Address</label>
+                <textarea class="form-control contact_area" rows="4"></textarea>
+              </div>
+            </div>
+          </div>
+        </form> -->
+
+        <app-address-form #addressForm (submit)="onSubmit($event, closeBtn)"></app-address-form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn_yellow_fm my-3 my-md-3" (click)="addressForm.onsubmit()">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

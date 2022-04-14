@@ -6,8 +6,14 @@
       <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12 col-12 top_nav_left my-2">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link pl-0" routerLink="/login"><img src="assets/img/sgin-in.png" class="img-fluid mr-3">Sign
-              In</a>
+            <a *ngIf="!(user$ | async)" class="nav-link pl-0" routerLink="/login">
+              <img src="assets/img/sgin-in.png" class="img-fluid mr-3">
+              Sign In
+            </a>
+            <a *ngIf="user$ | async as user" class="nav-link pl-0" routerLink="/account">
+              <img src="assets/img/sgin-in.png" class="img-fluid mr-3">
+              {{ user.first_name }}
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"><img src="assets/img/call.png" class="img-fluid mr-3">+91-000-000-0000</a>
@@ -58,13 +64,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav w-100 nav-justified">
-        <!-- <li class="nav-item active">
-              <a class="nav-link" href="#">Shop <span class="sr-only">(current)</span></a>
-            </li> -->
-        <li class="nav-item dropdown megamenu-li">
-          <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">Shop</a>
-          <div class="dropdown-menu megamenu border-0 rounded-0" aria-labelledby="dropdown01">
+        <li class="nav-item dropdown megamenu-li" id="drooutt">
+          <a class="nav-link dropdown-toggle" (click)="isOpen = !isOpen">Shop</a>
+          <div class="dropdown-menu megamenu border-0 rounded-0" [ngStyle]="{'display': isOpen ? 'block':'none'}">
             <div class="container">
               <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 custom_drop_col">

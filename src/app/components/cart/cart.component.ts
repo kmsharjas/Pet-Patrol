@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { CartItem } from 'src/app/models/cart.model';
 import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,12 +15,16 @@ export class CartComponent implements OnInit {
 
   subTotal: number = 0;
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.cart$ = this.cartService.cartItems$.pipe(
       map((items) => {
-        this.subTotal = items.reduce((acc, item) => acc + item.total, 0);
+        this.subTotal = items?.reduce((acc, item) => acc + item.total, 0);
         return items;
       })
     );
@@ -43,5 +49,13 @@ export class CartComponent implements OnInit {
 
   onRemoveItem(item: CartItem) {
     this.cartService.removeCartItem(item);
+  }
+
+  proceedToCheckout() {
+    if (!this.userService.getUser())
+      return this.router.navigate(['/login'], {
+        queryParams: { returnUrl: '/checkout' },
+      });
+    return this.router.navigate(['/checkout']);
   }
 }

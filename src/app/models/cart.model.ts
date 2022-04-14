@@ -7,6 +7,10 @@
 //   items: CartItem[];
 // }
 
+export interface Payment {
+  payment_method: string;
+}
+
 export interface CartItem {
   id: number;
   name: string;

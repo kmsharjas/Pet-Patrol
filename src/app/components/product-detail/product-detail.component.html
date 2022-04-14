@@ -59,8 +59,11 @@
         <div class="d-flex">
           <div class="quantity my-3">
             <input type="number" min="1" max="99" step="1" value="1" #qty />
-            <div class="quantity__btn quantity__btn--up"></div>
-            <div class="quantity__btn quantity__btn--down"></div>
+            <div class="quantity__btn quantity__btn--up"
+              (click)="qty.value = +qty.value < 10 ? (+qty.value+1).toString() : '10'">
+            </div>
+            <div class="quantity__btn quantity__btn--down"
+              (click)="qty.value = +qty.value > 1 ? (+qty.value-1).toString() : '1'"></div>
           </div>
           <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold ml-3"
             (click)="addToCart(product, +qty.value)">

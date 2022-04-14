@@ -29,7 +29,7 @@
 <!-- -------------------------my account start------------------------- -->
 <section class="account_bg">
   <div class="container">
-    <div class="row">
+    <div class="row" *ngIf="user$ | async as user">
       <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 account_col_right my-3 my-md-3">
         <div class="acc_side_card card border-0">
           <div class="card-body p-0">
@@ -39,64 +39,74 @@
                 <div class="media-body">
                   <h5 class="mt-0 font-weight-bold mb-0 hd_font"><small class="font-weight-light">Welcome back, </small>
                   </h5>
-                  <h3 class="mb-0 hd_font font-weight-bold">Arun</h3>
+                  <h3 class="mb-0 hd_font font-weight-bold">{{ user.first_name }}</h3>
                 </div>
               </div>
               <h4 class="font-weight-bold hd_font under_line_hd my-3 my-md-4">Account Settings</h4>
             </div>
             <div class="account_card">
               <div class="list-group profile_list border-0">
-                <a href="#" class="list-group-item list-group-item-action border-0 rounded-0 active">
-                  Personal Information
+                <a (click)="selection = 'personal'" class="list-group-item list-group-item-action border-0 rounded-0"
+                  [ngClass]="{'active': selection === 'personal'}">
+                  <i class="fa fa-user-circle-o mr-3" aria-hidden="true"></i> Personal Information
                 </a>
-                <a href="#" class="list-group-item list-group-item-action border-0 rounded-0">My Orders</a>
-                <a href="#" class="list-group-item list-group-item-action border-0 rounded-0">Track My Order</a>
-                <a href="#" class="list-group-item list-group-item-action border-0 rounded-0">Address Book</a>
-                <a class="list-group-item list-group-item-action border-0 rounded-0" (click)="logout()">Logout</a>
+                <a (click)="selection = 'order'"
+                  class="list-group-item list-group-item-action border-0 rounded-0 cursor_hover"
+                  [ngClass]="{'active': selection === 'order'}"><i class="fa fa-archive mr-3" aria-hidden="true"></i>My
+                  Orders</a>
+                <a (click)="selection = 'address'"
+                  class="list-group-item list-group-item-action border-0 rounded-0 cursor_hover"
+                  [ngClass]="{'active': selection === 'address'}"><i class="fa fa-address-book-o mr-3"
+                    aria-hidden="true"></i>Address
+                  Book</a>
+                <a (click)="logout()" class="list-group-item list-group-item-action border-0 rounded-0 cursor_hover">
+                  <i class="fa fa-power-off mr-3" aria-hidden="true"></i>Logout</a>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 account_col_left my-3 my-md-3">
-        <div class="card_personal">
+      <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 account_col_left my-3 my-md-3" [ngSwitch]="selection">
+        <div class="card_personal" *ngSwitchCase="'personal'">
           <h4 class="hd_font font-weight-bold mb-4">Personal Information</h4>
-          <form>
+          <form [formGroup]="profileForm">
             <div class="row">
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ads_fom_col">
                 <div class="form-group">
                   <label class="font-weight-bold">First Name</label>
-                  <input type="text" class="form-control ads_control">
+                  <input type="text" class="form-control ads_control" formControlName="first_name">
                 </div>
               </div>
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ads_fom_col">
                 <div class="form-group">
                   <label class="font-weight-bold">Last Name</label>
-                  <input type="text" class="form-control ads_control">
+                  <input type="text" class="form-control ads_control" formControlName="last_name">
                 </div>
               </div>
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ads_fom_col">
                 <div class="form-group">
                   <label class="font-weight-bold">Email</label>
-                  <input type="text" class="form-control ads_control">
+                  <input type="text" class="form-control ads_control" formControlName="email">
                 </div>
               </div>
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ads_fom_col">
                 <div class="form-group">
                   <label class="font-weight-bold">Mobile number</label>
-                  <input type="text" class="form-control ads_control">
+                  <input type="text" class="form-control ads_control" formControlName="mobile" maxlength=10
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                 </div>
               </div>
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ads_fom_controls text-md-right">
-                <button type="button" class="btn btn_yellow_fm my-3 my-md-3 mr-2">Edit</button>
-                <button type="button" class="btn btn_green_fm my-3 my-md-3">Save</button>
+                <button type="button" class="btn btn_yellow_fm my-3 my-md-3 mr-2" (click)="toggle()">Edit</button>
+                <button type="button" class="btn btn_green_fm my-3 my-md-3" (click)="save()">Save</button>
               </div>
             </div>
           </form>
         </div>
-        <div class="card_order">
+        <div class="card_order" *ngSwitchCase="'order'">
           <h4 class="hd_font font-weight-bold mb-4">My Orders</h4>
+          <!-- <app-myorders (track)="toggleTrack($event)"></app-myorders> -->
           <div class="acc_card card mb-3">
             <div class="card-body">
               <div class="row align-items-center">
@@ -142,7 +152,7 @@
             </div>
           </div>
         </div>
-        <div class="card_order_track">
+        <div class="card_order_track" *ngSwitchCase="'track'">
           <h4 class="hd_font font-weight-bold mb-4">Track My Order</h4>
           <div class="acc_card card mb-3">
             <div class="card-body">
@@ -188,48 +198,9 @@
           </div>
 
         </div>
-        <div class="card_Ads_book">
+        <div class="card_Ads_book" *ngSwitchCase="'address'">
           <h4 class="hd_font font-weight-bold mb-4">Address Book</h4>
-          <div class="acc_card card mb-3">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 order_adress_col">
-                  <div class="card border-0 mb-3">
-                    <div class="card-body">
-                      <button type="button" class="btn btn_yellow_fm my-3 my-md-3" data-toggle="modal"
-                        data-target="#add-new-address">Add A New Address</button>
-                    </div>
-                  </div>
-                  <div class="card mb-3 border-0">
-                    <div class="card-body">
-                      <h4 class="font-weight-bold">Arun Ram</h4>
-                      <p class="mb-0">+91-123-456-7890</p>
-                      <p class="w-75 text-secondary"><small>3rd floor,Triumph Tower, Seaport airport road,Kakkanadu,
-                          Seaport-airport road, Ernakulam, Kerala - 682021</small></p>
-                      <a href="" class="mr-2 gr_color font-weight-bold" data-toggle="modal"
-                        data-target="#adress_edit"><i class="fa fa-pencil-square-o mr-1" aria-hidden="true"></i>
-                        Edit</a>
-                      <a href="" class="text-danger font-weight-bold"><i class="fa fa-trash-o mr-1"
-                          aria-hidden="true"></i>Remove</a>
-                    </div>
-                  </div>
-                  <div class="card mb-3 border-0">
-                    <div class="card-body">
-                      <h4 class="font-weight-bold">Akhil Ram</h4>
-                      <p class="mb-0">+91-123-456-7890</p>
-                      <p class="w-75 text-secondary"><small>3rd floor,Triumph Tower, Seaport airport road,Kakkanadu,
-                          Seaport-airport road, Ernakulam, Kerala - 682021</small></p>
-                      <a href="" class="mr-2 gr_color font-weight-bold" data-toggle="modal"
-                        data-target="#adress_edit"><i class="fa fa-pencil-square-o mr-1" aria-hidden="true"></i>
-                        Edit</a>
-                      <a href="" class="text-danger font-weight-bold"><i class="fa fa-trash-o mr-1"
-                          aria-hidden="true"></i>Remove</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <app-address></app-address>
         </div>
       </div>
     </div>

@@ -903,6 +903,12 @@ a:hover {
 @media (min-width: 576px) and (max-width: 767px) {
 }
 @media (max-width: 767px) {
+  .user_img {
+    position: relative;
+    margin-top: 0px;
+    left: auto;
+    margin: 0 auto;
+  }
   .mob {
     display: none;
   }

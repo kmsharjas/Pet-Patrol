@@ -10,6 +10,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { MyordersComponent } from './components/myorders/myorders.component';
+import { OrderResponseComponent } from './components/order-response/order-response.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -27,9 +29,11 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'account', component: AccountComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'orderResponse', component: OrderResponseComponent },
   { path: 'career', component: CareerComponent },
   { path: 'blogs', component: BlogsComponent },
   { path: 'blog', component: BlogComponent },
+  { path: 'orders', component: MyordersComponent },
 ];
 
 @NgModule({

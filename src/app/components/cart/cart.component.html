@@ -57,7 +57,7 @@
     <div class="row">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 Cart_col my-3 my-md-3 text-md-right">
         <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold"
-          routerLink="/checkout">Proceed to
+          (click)="proceedToCheckout()">Proceed to
           checkout</button>
       </div>
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 Cart_col my-3 my-md-3">
@@ -90,8 +90,10 @@
                   <div class="quantity">
                     <input type="number" min="1" max="99" step="1" [value]="item.quantity"
                       (change)="onChangeQty(item, $event)">
-                    <div class="quantity__btn quantity__btn--up"></div>
-                    <div class="quantity__btn quantity__btn--down"></div>
+                    <div class="quantity__btn quantity__btn--up"
+                      (click)="item.quantity = item.quantity < 10 ? item.quantity+1 : 10"></div>
+                    <div class="quantity__btn quantity__btn--down"
+                      (click)="item.quantity = item.quantity > 1 ?item.quantity-1 : 1"></div>
                   </div>
                 </td>
                 <td>{{ item.total | currency: 'INR'}}</td>
@@ -154,7 +156,7 @@
       </div>
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 Cart_col my-3 my-md-3 text-md-right">
         <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold"
-          routerLink="/checkout">Proceed to
+          (click)="proceedToCheckout()">Proceed to
           checkout</button>
       </div>
     </div>

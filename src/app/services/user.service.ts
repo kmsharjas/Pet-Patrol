@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Address } from '../models/address.model';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -76,7 +77,7 @@ export class UserService {
   async updateUser(user: User, id: number) {
     try {
       const newUser = await this.http
-        .put<User>(`${this.baseUrl}/updateregisteredusers/${id}/`, user)
+        .put<User>(`${this.baseUrl}/updateregisteredusers/${id}`, user)
         .toPromise();
       this.setuser(newUser);
     } catch (error) {
@@ -84,11 +85,11 @@ export class UserService {
     }
   }
 
-  // getDefaultAddress(id: number) {
-  //   return this.http
-  //     .get<Address[]>(`${this.baseUrl}/getdefaultaddress/${id}/`)
-  //     .pipe(map((addresses) => addresses[0]));
-  // }
+  getDefaultAddress(id: number) {
+    return this.http
+      .get<Address[]>(`${this.baseUrl}/getdefaultaddress/${id}`)
+      .pipe(map((addresses) => addresses[0]));
+  }
 
   logout() {
     localStorage.removeItem('user');

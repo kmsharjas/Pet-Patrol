@@ -13,4 +13,5 @@ export interface Address {
   country: number;
   country_name?: string;
   state_name?: string;
+  type?: string;
 }

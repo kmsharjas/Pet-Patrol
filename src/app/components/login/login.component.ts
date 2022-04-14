@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
   error2?: string;
   constructor(
     private fb: FormBuilder,
-    private rout: Router,
+    private router: Router,
+    private rout: ActivatedRoute,
     private userService: UserService
   ) {
     //login form
@@ -63,6 +64,7 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
+    const returnUrl = this.rout.snapshot.queryParamMap.get('returnUrl');
     this.message = undefined;
 
     const { mobile, otp } = this.loginForm.value;
@@ -70,7 +72,13 @@ export class LoginComponent implements OnInit {
 
     try {
       this.message = await this.userService.login(mobile, otp);
-      if (this.message === 'otp is verified') this.rout.navigate(['/account']);
+      if (this.message === 'otp is verified') {
+        if (returnUrl) {
+          this.router.navigate([`/${returnUrl}`]);
+        } else {
+          this.router.navigate(['/account']);
+        }
+      }
       // if (this.message === 'otp is verified') this.close.emit();
     } catch (error) {
       console.log(error);

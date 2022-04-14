@@ -1,0 +1,79 @@
+<form [formGroup]="addressForm" (submit)="onsubmit()">
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
+      <div class="form-group">
+        <label class="font-weight-bold">Flat, House no., Building, Company, Apartment</label>
+        <input type="text" class="form-control" formControlName="flat_no">
+      </div>
+    </div>
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
+      <div class="form-group">
+        <label class="font-weight-bold">Landmark</label>
+        <input type="text" class="form-control" formControlName="landmark">
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
+      <div class="form-group">
+        <label class="font-weight-bold">Mobile No. *</label>
+        <input type="text" class="form-control" formControlName="mobile" maxlength=10
+          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
+      <div class="form-group">
+        <label class="font-weight-bold">Email *</label>
+        <input type="text" class="form-control" formControlName="email">
+      </div>
+    </div>
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
+      <div class="form-group">
+        <label class="font-weight-bold">Town/City</label>
+        <input type="text" class="form-control" formControlName="city">
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
+      <div class="form-group">
+        <label class="font-weight-bold">Pin Code *</label>
+        <input type="text" class="form-control" formControlName="pincode" maxlength=8
+          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
+      <div class="form-group">
+        <label class="font-weight-bold">State</label>
+        <select class="form-control" formControlName="state">
+          <option *ngFor="let state of states$ | async" [value]="state.id">{{ state.state }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
+      <div class="form-group">
+        <label class="font-weight-bold">Country</label>
+        <select class="form-control" formControlName="country">
+          <option *ngFor="let country of coutries$ | async" [value]="country.id">{{ country.country }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
+      <div class="form-group">
+        <label class="font-weight-bold">Address Type</label>
+        <select class="form-control" formControlName="add_type">
+          <option *ngFor="let type of addressType$ | async" [value]="type.id">{{ type.type }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <!-- <div *ngIf="showSubmit" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 checkout_col">
+    <button type="button" class="btn btn_yellow_fm my-3 my-md-3">Save</button>
+  </div> -->
+  <!-- <div class="row">
+    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label hd_font font-weight-bold" for="defaultCheck1">
+          Ship to a different address?
+        </label>
+      </div>
+    </div>
+  </div> -->
+</form>
