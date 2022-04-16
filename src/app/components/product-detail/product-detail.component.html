@@ -58,7 +58,7 @@
         </p>
         <div class="d-flex">
           <div class="quantity my-3">
-            <input type="number" min="1" max="99" step="1" value="1" #qty />
+            <input type="number" min="1" max="10" step="1" value="1" #qty />
             <div class="quantity__btn quantity__btn--up"
               (click)="qty.value = +qty.value < 10 ? (+qty.value+1).toString() : '10'">
             </div>
@@ -87,73 +87,19 @@
       Related Products
     </h3>
     <div class="row">
-      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12product_col my-3 my-md-3">
+      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12product_col my-3 my-md-3"
+        *ngFor="let product of relatedProducts$|async">
         <div class="card product_card">
           <div class="pd_imag">
-            <img src="assets/img/product1.png" class="img-fluid product_image" alt="product image" />
+            <img [src]="product.thumbnail_img" class="img-fluid product_image" alt="product image" />
           </div>
           <div class="card-body prduct_body text-center">
-            <p class="mb-0 font-weight-bold shop_ht">Norwegian Forest Cat</p>
+            <p class="mb-0 font-weight-bold shop_ht">{{product.name}}</p>
             <p class="mb-0">
-              <small><span class="text-muted mr-2"><s>$13.00</s></span></small>
-              <span class="text-danger font-weight-bold">$12.00</span>
+              <!-- <small><span class="text-muted mr-2"><s>$13.00</s></span></small> -->
+              <span class="text-danger font-weight-bold">{{product.included_gst|currency:'INR'}}</span>
             </p>
-            <button type="button" class="btn btn_shop_now my-3 my-md-3">
-              Shop Now
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 product_col my-3 my-md-3">
-        <div class="card product_card">
-          <div class="pd_imag">
-            <span class="pd_new_tag">New</span>
-            <img src="assets/img/product2.png" class="img-fluid product_image" alt="product image" />
-          </div>
-          <div class="card-body prduct_body text-center">
-            <p class="mb-0 font-weight-bold shop_ht">Pet Food Variable</p>
-            <p class="mb-0">
-              <small><span class="text-muted mr-2"><s>$13.00</s></span></small>
-              <span class="text-danger font-weight-bold">$18.00</span>
-            </p>
-            <button type="button" class="btn btn_shop_now my-3 my-md-3">
-              Shop Now
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 product_col my-3 my-md-3">
-        <div class="card product_card">
-          <div class="pd_imag">
-            <span class="pd_off_tag">20% Off</span>
-            <img src="assets/img/product3.png" class="img-fluid product_image" alt="product image" />
-          </div>
-          <div class="card-body prduct_body text-center">
-            <p class="mb-0 font-weight-bold shop_ht">
-              Almo Nature Daily Boosted Sale
-            </p>
-            <p class="mb-0">
-              <small><span class="text-muted mr-2"><s>$13.00</s></span></small>
-              <span class="text-danger font-weight-bold">$20.00</span>
-            </p>
-            <button type="button" class="btn btn_shop_now my-3 my-md-3">
-              Shop Now
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12product_col my-3 my-md-3">
-        <div class="card product_card">
-          <div class="pd_imag">
-            <img src="assets/img/product4.png" class="img-fluid product_image" alt="product image" />
-          </div>
-          <div class="card-body prduct_body text-center">
-            <p class="mb-0 font-weight-bold shop_ht">Rocco Classic</p>
-            <p class="mb-0">
-              <small><span class="text-muted mr-2"><s>$13.00</s></span></small>
-              <span class="text-danger font-weight-bold">$25.00</span>
-            </p>
-            <button type="button" class="btn btn_shop_now my-3 my-md-3">
+            <button type="button" class="btn btn_shop_now my-3 my-md-3" [routerLink]="['/products/'+product.id]">
               Shop Now
             </button>
           </div>

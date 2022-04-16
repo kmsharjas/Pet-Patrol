@@ -16,13 +16,12 @@
           </li>
         </ul>
       </div>
-
     </div>
     <div class="sub_bnrt_img">
-      <img src="assets/img/cat&amp;dog.png" class="img-fluid" alt="inner banner image">
+      <img src="assets/img/cat&amp;dog.png" class="img-fluid" alt="inner banner image" />
     </div>
   </div>
-  <img src="assets/img/inner-bnr-bottom.png" class="img-fluid comm_bnr_shape" width="100%" alt="shape">
+  <img src="assets/img/inner-bnr-bottom.png" class="img-fluid comm_bnr_shape" width="100%" alt="shape" />
 </section>
 <!-- ----------------------------inner banner end---------------------------- -->
 <!-- -------------------------art start------------------------- -->
@@ -41,7 +40,9 @@
         <div class="media">
           <span class="step_load mr-3">2</span>
           <div class="media-body">
-            <p class="mb-0 hd_font font-weight-bold">Payment &amp; Delivery Options</p>
+            <p class="mb-0 hd_font font-weight-bold">
+              Payment &amp; Delivery Options
+            </p>
           </div>
         </div>
       </div>
@@ -57,8 +58,9 @@
     <div class="row">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 Cart_col my-3 my-md-3 text-md-right">
         <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold"
-          (click)="proceedToCheckout()">Proceed to
-          checkout</button>
+          [disabled]="(cart$ | async).length === 0" (click)="proceedToCheckout()">
+          Proceed to checkout
+        </button>
       </div>
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 Cart_col my-3 my-md-3">
         <div class="table-responsive">
@@ -77,29 +79,37 @@
                 <th scope="row">
                   <div class="media cart_tb_media">
                     <div class="cat_md_img">
-                      <img class="mr-3" [src]="item.image" alt="Generic placeholder image">
+                      <img class="mr-3" [src]="item.image" alt="Generic placeholder image" />
                     </div>
                     <div class="media-body">
                       <p class="mb-0">{{ item.name }}</p>
-                      <small><span class="">{{ item.offerTitle}}</span></small>
+                      <small><span class="">{{ item.offerTitle }}</span></small>
                     </div>
                   </div>
                 </th>
-                <td>{{ item.price | currency: 'INR'}}</td>
+                <td>{{ item.price | currency: "INR" }}</td>
                 <td class="cart_count">
                   <div class="quantity">
-                    <input type="number" min="1" max="99" step="1" [value]="item.quantity"
-                      (change)="onChangeQty(item, $event)">
-                    <div class="quantity__btn quantity__btn--up"
-                      (click)="item.quantity = item.quantity < 10 ? item.quantity+1 : 10"></div>
-                    <div class="quantity__btn quantity__btn--down"
-                      (click)="item.quantity = item.quantity > 1 ?item.quantity-1 : 1"></div>
+                    <input type="number" min="1" max="10" step="1" [value]="item.quantity"
+                      (change)="onChangeQty(item, $event.target['value'])" />
+                    <div class="quantity__btn quantity__btn--up" (click)="
+                        onChangeQty(
+                          item,
+                          item.quantity < 10 ? +item.quantity + 1 : 10
+                        )
+                      "></div>
+                    <div class="quantity__btn quantity__btn--down" (click)="
+                        onChangeQty(
+                          item,
+                          item.quantity > 1 ? +item.quantity - 1 : 1
+                        )
+                      "></div>
                   </div>
                 </td>
-                <td>{{ item.total | currency: 'INR'}}</td>
+                <td>{{ item.total | currency: "INR" }}</td>
                 <td>
                   <a (click)="onRemoveItem(item)">
-                    <img src="assets/img/cancel.png" class="img-fluid" alt="delete">
+                    <img src="assets/img/cancel.png" class="img-fluid" alt="delete" />
                   </a>
                 </td>
               </tr>
@@ -109,9 +119,12 @@
       </div>
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 Cart_col my-3 my-md-3 text-md-right">
         <button type="button" class="btn btn_banner my-3 my-md-3 hd_font font-weight-bold mr-md-3"
-          routerLink="../products">Continue
-          Shopping</button>
-        <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold">Update Cart</button>
+          routerLink="../products">
+          Continue Shopping
+        </button>
+        <!-- <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold">
+          Update Cart
+        </button> -->
       </div>
     </div>
   </div>
@@ -123,41 +136,44 @@
     <h4 class="hd_font font-weight-bold mb-4">Cart Total</h4>
     <div class="row align-items-center">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 cart_sub_col">
-        <hr>
+        <hr />
       </div>
       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 my-3 my-md-3 cart_sub_col">
         <h6 class="mb-0">Subtotal</h6>
       </div>
       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-3 my-md-3 cart_sub_col text-md-right">
-        <h6 class="mb-0">{{ subTotal | currency: 'INR' }}</h6>
+        <h6 class="mb-0">{{ subTotal | currency: "INR" }}</h6>
       </div>
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 cart_sub_col">
-        <hr>
+        <hr />
       </div>
-      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 my-3 my-md-3 cart_sub_col">
+      <!-- <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 my-3 my-md-3 cart_sub_col">
         <h6 class="mb-0">Shipping</h6>
-      </div>
-      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-3 my-md-3 cart_sub_col text-md-right">
+      </div> -->
+      <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-3 my-md-3 cart_sub_col text-md-right">
         <p class="mb-2">Free Shipping</p>
         <p class="mb-2">Shipping to Victoria.</p>
         <p class="mb-0 gr_color">Change address</p>
-      </div>
-      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 cart_sub_col">
+      </div> -->
+      <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 cart_sub_col">
         <hr>
-      </div>
+      </div> -->
       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 my-3 my-md-3 cart_sub_col">
         <h4 class="mb-0 gr_color font-weight-bold">Total</h4>
       </div>
       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-3 my-md-3 cart_sub_col text-md-right">
-        <h4 class="mb-0 gr_color font-weight-bold">{{ subTotal + 0 | currency: 'INR' }}</h4>
+        <h4 class="mb-0 gr_color font-weight-bold">
+          {{ subTotal + 0 | currency: "INR" }}
+        </h4>
       </div>
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 cart_sub_col">
-        <hr>
+        <hr />
       </div>
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 Cart_col my-3 my-md-3 text-md-right">
         <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold"
-          (click)="proceedToCheckout()">Proceed to
-          checkout</button>
+          [disabled]="(cart$ | async).length === 0" (click)="proceedToCheckout()">
+          Proceed to checkout
+        </button>
       </div>
     </div>
   </div>

@@ -30,8 +30,9 @@ export class CartComponent implements OnInit {
     );
   }
 
-  onChangeQty(item: CartItem, ev: Event) {
-    const quantity = +(ev.target as HTMLInputElement).value;
+  onChangeQty(item: CartItem, qty: number) {
+    // const quantity = +(ev.target as HTMLInputElement).value;
+    const quantity = qty;
 
     item.quantity = quantity;
     item.total = item.price * item.quantity;
@@ -48,7 +49,7 @@ export class CartComponent implements OnInit {
   }
 
   onRemoveItem(item: CartItem) {
-    this.cartService.removeCartItem(item);
+    confirm('Are you sure?') && this.cartService.removeCartItem(item);
   }
 
   proceedToCheckout() {

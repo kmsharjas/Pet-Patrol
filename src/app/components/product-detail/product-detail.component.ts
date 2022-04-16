@@ -13,6 +13,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductDetailComponent implements OnInit {
   product$: Observable<Product>;
+  relatedProducts$: Observable<Product[]>;
 
   constructor(
     private productService: ProductService,
@@ -25,9 +26,11 @@ export class ProductDetailComponent implements OnInit {
     this.product$ = this.route.params.pipe(
       switchMap((params) => this.productService.getProduct(params['id']))
     );
+    this.relatedProducts$ = this.productService.getProducts({}, 4);
   }
 
   addToCart(product: Product, quantity: number) {
+    if (quantity > 10) return alert('Maximum quantity is 10');
     if (this.cartService.checkCartItem(product.id))
       return alert('This product is already in your cart');
 

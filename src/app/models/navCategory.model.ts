@@ -6,6 +6,7 @@ export interface AnimalCategory {
 }
 
 export interface ServiceCategory {
+  id: number;
   animal: number;
   service: string;
   items1: ServiceSubCategory[];

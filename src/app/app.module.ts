@@ -31,6 +31,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyordersComponent } from './components/myorders/myorders.component';
+import { OffersComponent } from './components/offers/offers.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { MyordersComponent } from './components/myorders/myorders.component';
     OrderResponseComponent,
     AddressComponent,
     MyordersComponent,
+    OffersComponent,
   ],
   imports: [
     BrowserModule,

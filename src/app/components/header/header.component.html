@@ -7,21 +7,21 @@
         <ul class="nav">
           <li class="nav-item">
             <a *ngIf="!(user$ | async)" class="nav-link pl-0" routerLink="/login">
-              <img src="assets/img/sgin-in.png" class="img-fluid mr-3">
+              <img src="assets/img/sgin-in.png" class="img-fluid mr-3" />
               Sign In
             </a>
             <a *ngIf="user$ | async as user" class="nav-link pl-0" routerLink="/account">
-              <img src="assets/img/sgin-in.png" class="img-fluid mr-3">
+              <img src="assets/img/sgin-in.png" class="img-fluid mr-3" />
               {{ user.first_name }}
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"><img src="assets/img/call.png" class="img-fluid mr-3">+91-904-847-7007</a>
+            <a class="nav-link"><img src="assets/img/call.png" class="img-fluid mr-3" />+91-904-847-7007</a>
           </li>
         </ul>
       </div>
       <div class="col-xl-4 col-lg-2 col-md-2 col-sm-12 col-12 top_nav_center my-2 text-center">
-        <a href=""> <img src="assets/img/logo.png" class="img-fluid"></a>
+        <a href=""> <img src="assets/img/logo.png" class="img-fluid" /></a>
       </div>
       <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12 col-12 top_nav_right my-2">
         <ul class="nav justify-content-end">
@@ -31,10 +31,11 @@
                 <div class="form-row align-items-center">
                   <div class="col-auto search_col">
                     <div class="input-group">
-                      <input type="text" class="form-control border-0 bg-transparent" placeholder="Search">
+                      <input type="text" class="form-control border-0 bg-transparent" placeholder="Search" />
                       <div class="input-group-prepend">
-                        <div class="input-group-text border-0 bg-transparent"><i class="fa fa-search"
-                            aria-hidden="true"></i></div>
+                        <div class="input-group-text border-0 bg-transparent">
+                          <i class="fa fa-search" aria-hidden="true"></i>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -44,7 +45,8 @@
           </li>
           <li class="nav-item cart_link">
             <a class="nav-link pr-0" routerLink="cart">Cart<img src="assets/img/shopping-cart.png"
-                class="img-fluid mr-3"> <span class="cart_count">{{ cartQty$ | async }}</span></a>
+                class="img-fluid mr-3" />
+              <span class="cart_count">{{ cartQty$ | async }}</span></a>
           </li>
         </ul>
       </div>
@@ -56,7 +58,7 @@
 <nav class="navbar navbar-expand-lg navbar-light nav_default">
   <div class="container">
     <a class="navbar-brand" href="index.html">
-      <img src="assets/img/logo.png" class="img-fluid">
+      <img src="assets/img/logo.png" class="img-fluid" />
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +68,7 @@
       <ul class="navbar-nav w-100 nav-justified">
         <li class="nav-item dropdown megamenu-li" id="drooutt">
           <a class="nav-link dropdown-toggle" (click)="isOpen = !isOpen">Shop</a>
-          <div class="dropdown-menu megamenu border-0 rounded-0" [ngStyle]="{'display': isOpen ? 'block':'none'}">
+          <div class="dropdown-menu megamenu border-0 rounded-0" [ngStyle]="{ display: isOpen ? 'block' : 'none' }">
             <div class="container">
               <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 custom_drop_col">
@@ -74,10 +76,10 @@
                     <div class="col-12 col-sm-4 col-lg-2">
                       <ul class="nav nav-tabs flex-column mb-3 drop_down_tab custom_tab_menu">
                         <li *ngFor="let animal of animalCategory; index as i" class="nav-item"
-                          [ngClass]="{active: i===selectedAnimalIndex}">
-                          <a class="nav-link   font-weight-bold" data-toggle="tab" routerLink="products"
-                            (mouseover)="selectedAnimalIndex = i" [ngClass]="{active: i===selectedAnimalIndex}">
-                            {{animal.animal}}
+                          [ngClass]="{ active: i === selectedAnimalIndex }">
+                          <a class="nav-link font-weight-bold" data-toggle="tab" (mouseover)="selectedAnimalIndex = i"
+                            [ngClass]="{ active: i === selectedAnimalIndex }">
+                            {{ animal.animal }}
                             <i class="fa fa-angle-right ml-2" aria-hidden="true"></i>
                           </a>
                         </li>
@@ -86,27 +88,46 @@
                     <div class="col-12 col-sm-8 col-lg-10">
                       <div class="tab-content custom_tab_content">
                         <div *ngFor="let animal of animalCategory; index as i" class="tab-pane show fade"
-                          [ngClass]="{active: i===selectedAnimalIndex}">
+                          [ngClass]="{ active: i === selectedAnimalIndex }">
                           <div class="row">
                             <div *ngFor="let category of animal.items"
                               class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
-                              <a routerLink="products">
-                                <p class="font-weight-bold mb-2">{{ category.service }}</p>
+                              <a routerLink="products" [queryParams]="{
+                                  animal_category: animal.id,
+                                  service_category: category.id,
+                                  service_subcategory: null,
+                                  packaging_type: null,
+                                  min_price: null,
+                                  max_price: null
+                                }" queryParamsHandling="merge" (click)="isOpen = !isOpen">
+                                <p class="font-weight-bold mb-2">
+                                  {{ category.service }}
+                                </p>
                               </a>
-                              <hr>
-                              <a routerLink="products" *ngFor="let sub of category.items1" class="dropdown-item"><i
-                                  class="fa fa-paw mr-2" aria-hidden="true"></i>
-                                {{sub.subcategory}}
+                              <hr />
+                              <a routerLink="products" [queryParams]="{
+                                  animal_category: animal.id,
+                                  service_category: category.id,
+                                  service_subcategory: sub.id,
+                                  packaging_type: null,
+                                  min_price: null,
+                                  max_price: null
+                                }" queryParamsHandling="merge" *ngFor="let sub of category.items1"
+                                class="dropdown-item" (click)="isOpen = !isOpen">
+                                <i class="fa fa-paw mr-2" aria-hidden="true"></i>
+                                {{ sub.subcategory }}
                               </a>
                             </div>
                             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 d-none d-lg-block">
-                              <a> <img class="d-block w-100" src="assets/img/drop.jpg" class="img-fluid"
-                                  alt="drop down image"></a>
+                              <a>
+                                <img class="d-block w-100" [src]="
+                                    animal.animal === 'Dog'
+                                      ? 'assets/img/drop.jpg'
+                                      : 'assets/img/drop2.jpg'
+                                  " class="img-fluid" alt="drop down image" /></a>
                             </div>
                           </div>
                         </div>
-
-
                       </div>
                     </div>
                   </div>
@@ -116,7 +137,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="products">Offers</a>
+          <a class="nav-link" routerLink="offers">Offers</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="about">About</a>
@@ -129,17 +150,17 @@
         </li>
         <li class="nav-item d_none_mob">
           <a *ngIf="!(user$ | async)" class="nav-link pl-0" routerLink="/login">
-            <img src="assets/img/sgin-in.png" class="img-fluid mr-3">
+            <img src="assets/img/sgin-in.png" class="img-fluid mr-3" />
             Sign In
           </a>
           <a *ngIf="user$ | async as user" class="nav-link pl-0" routerLink="/account">
-            <img src="assets/img/sgin-in.png" class="img-fluid mr-3">
+            <img src="assets/img/sgin-in.png" class="img-fluid mr-3" />
             {{ user.first_name }}
           </a>
         </li>
         <li class="nav-item cart_link d_none_mob">
           <a class="nav-link" href="cart.html">
-            <img src="assets/img/shopping-cart.png" class="img-fluid mr-3">
+            <img src="assets/img/shopping-cart.png" class="img-fluid mr-3" />
             <span class="cart_count">{{ cartQty$ | async }}</span></a>
         </li>
       </ul>

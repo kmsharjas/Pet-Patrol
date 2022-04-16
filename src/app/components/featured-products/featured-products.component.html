@@ -1,5 +1,5 @@
 <!-- --------------------------------product start-------------------------------- -->
-<section class="prd_sec">
+<!-- <section class="prd_sec">
   <div class="prd_bg">
     <h3 class="text-center text-white hd_font cm_hd font-weight-bold mb-5">Our Products</h3>
     <div class="container">
@@ -60,5 +60,40 @@
     <img src="assets/img/product-bg-bottom2.png" class="img-fluid pd_top mob">
     <img src="assets/img/product-bg-bottom1.png" class="img-fluid pd_bottom mob">
   </div>
+</section> -->
+
+
+
+<!-- --------------------------------product start-------------------------------- -->
+<section class="prd_sec">
+  <div class="prd_bg">
+    <h3 class="text-center text-white hd_font cm_hd font-weight-bold mb-5">Our Products</h3>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12product_col my-3 my-md-3"
+          *ngFor="let product of products$ |async" [routerLink]="['/products/'+product.id]">
+          <div class="card product_card border-0">
+            <div class="pd_imag">
+              <img [src]="product.thumbnail_img" class="img-fluid product_image" alt="product image">
+            </div>
+            <div class="card-body prduct_body text-center">
+              <p class="mb-0 font-weight-bold">{{product.name}}</p>
+              <p class="mb-0">
+                <!-- <small><span class="text-muted mr-2"><s>13.00</s></span></small> -->
+                <span class="text-danger font-weight-bold"> {{product.included_gst|currency:'INR'}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 my-3 my-md-3 text-center">
+          <a type="button" routerLink="products" class="btn btn_banner my-3 my-md-3">View All</a>
+        </div>
+      </div>
+    </div>
+    <img src="assets/img/product-bg-bottom2.png" class="img-fluid pd_top mob">
+    <img src="assets/img/product-bg-bottom1.png" class="img-fluid pd_bottom mob">
+  </div>
 </section>
+<!-- --------------------------------product end-------------------------------- -->
+
 <!-- --------------------------------product end-------------------------------- -->

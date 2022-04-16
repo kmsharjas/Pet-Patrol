@@ -36,67 +36,103 @@
             <h4 class="font-weight-bold hd_font under_line_hd mb-4">Product Categories</h4>
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link pl-0" href="#">Cat Food</a>
+                <a class="nav-link pl-0" routerLink="." [queryParams]="{animal_category: 2}" queryParamsHandling="merge"
+                  [ngClass]="{'font-weight-bold': animalCategory === 2}">
+                  Cat Food
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pl-0" href="#">Dog Food</a>
+                <a class="nav-link pl-0" routerLink="." [queryParams]="{animal_category: 1}" queryParamsHandling="merge"
+                  [ngClass]="{'font-weight-bold': animalCategory === 1}">Dog Food</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pl-0" href="#">Uncategorized</a>
+                <a class="nav-link pl-0" routerLink="." [queryParams]="{animal_category: null}"
+                  queryParamsHandling="merge" [ngClass]="{'font-weight-bold': !animalCategory}">Uncategorized</a>
               </li>
             </ul>
             <h4 class="font-weight-bold hd_font under_line_hd my-4">Packaging Type</h4>
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link pl-0" href="#">Can</a>
+                <a class="nav-link pl-0" routerLink="." [queryParams]="{packaging_type: null}"
+                  queryParamsHandling="merge" [ngClass]="{'font-weight-bold': !packagingType}">All</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pl-0" href="#">Tray</a>
+                <a class="nav-link pl-0" routerLink="." [queryParams]="{packaging_type: 1}" queryParamsHandling="merge"
+                  [ngClass]="{'font-weight-bold': packagingType === 1}">Can</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pl-0" href="#">Box</a>
+                <a class="nav-link pl-0" routerLink="." [queryParams]="{packaging_type: 2}" queryParamsHandling="merge"
+                  [ngClass]="{'font-weight-bold': packagingType === 2}">Tray</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pl-0" href="#">Roll</a>
+                <a class="nav-link pl-0" routerLink="." [queryParams]="{packaging_type: 3}" queryParamsHandling="merge"
+                  [ngClass]="{'font-weight-bold': packagingType === 3}">Box</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link pl-0" routerLink="." [queryParams]="{packaging_type: 4}" queryParamsHandling="merge"
+                  [ngClass]="{'font-weight-bold': packagingType === 4}">Roll</a>
               </li>
             </ul>
             <h4 class="font-weight-bold hd_font under_line_hd my-4">Price</h4>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
-                checked="">
-              <label class="form-check-label" for="exampleRadios1">
-                Less than ₹200
-              </label>
+              <a class="nav-link p-0" routerLink="." [queryParams]="{min_price: null ,max_price: null}"
+                queryParamsHandling="merge">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                  [checked]="!minPrice && !maxPrice">
+                <label class="form-check-label" for="exampleRadios1">
+                  All
+                </label>
+              </a>
+            </div>
+            <div class="form-check">
+              <a class="nav-link p-0" routerLink="." [queryParams]="{min_price: null ,max_price: 200}"
+                queryParamsHandling="merge">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                  [checked]="maxPrice === 200">
+                <label class="form-check-label" for="exampleRadios1">
+                  Less than ₹200
+                </label>
+              </a>
             </div>
             <div class="form-check my-3">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-              <label class="form-check-label" for="exampleRadios2">
-                ₹200 to 300
-              </label>
+              <a class="nav-link p-0" routerLink="." [queryParams]="{min_price: 200 ,max_price: 300}"
+                queryParamsHandling="merge">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"
+                  [checked]="maxPrice === 300">
+                <label class="form-check-label" for="exampleRadios2">
+                  ₹200 to 300
+                </label>
+              </a>
             </div>
             <div class="form-check my-3">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
-              <label class="form-check-label" for="exampleRadios3">
-                ₹300 to 400
-              </label>
+              <a class="nav-link p-0" routerLink="." [queryParams]="{min_price: 300 ,max_price: 400}"
+                queryParamsHandling="merge">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3"
+                  [checked]="maxPrice === 400">
+                <label class="form-check-label" for="exampleRadios3">
+                  ₹300 to 400
+                </label>
+              </a>
             </div>
             <div class="form-check my-3">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4">
-              <label class="form-check-label" for="exampleRadios4">
-                ₹400 to 500
-              </label>
+              <a class="nav-link p-0" routerLink="." [queryParams]="{min_price: 400 ,max_price: 500}"
+                queryParamsHandling="merge">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4"
+                  [checked]="maxPrice === 500">
+                <label class="form-check-label" for="exampleRadios4">
+                  ₹400 to 500
+                </label>
+              </a>
             </div>
-            <!-- <div class="form-check my-3">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios5" value="option5">
-              <label class="form-check-label" for="exampleRadios5">
-                ₹500 to 600
-              </label>
-            </div> -->
             <div class="form-check my-3">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios6" value="option6">
-              <label class="form-check-label" for="exampleRadios6">
-                ₹500 &amp; Above
-              </label>
+              <a class="nav-link p-0" routerLink="." [queryParams]="{min_price: 500 ,max_price: null}"
+                queryParamsHandling="merge">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios6" value="option6"
+                  [checked]="minPrice === 500">
+                <label class="form-check-label" for="exampleRadios6">
+                  ₹500 &amp; Above
+                </label>
+              </a>
             </div>
             <div class="my-5">
               <a href="">
@@ -111,17 +147,14 @@
         <div class="shop_card">
           <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-6 col-12 mb-4">
-              <p class="mb-0 font-weight-bold">Showing 1–6 of 16 results</p>
+              <!-- <p class="mb-0 font-weight-bold">Showing 1–6 of 16 results</p> -->
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-4">
               <form>
                 <div class="form-group">
-                  <select class="form-control">
-                    <option>Sort By Popularity</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <select (change)="sortFilter$.next($event.target['value'])" class="form-control">
+                    <option value="asc">Sort by price: low to high</option>
+                    <option value="desc">Sort by price: high to low</option>
                   </select>
                 </div>
               </form>

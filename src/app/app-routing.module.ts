@@ -11,6 +11,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { MyordersComponent } from './components/myorders/myorders.component';
+import { OffersComponent } from './components/offers/offers.component';
 import { OrderResponseComponent } from './components/order-response/order-response.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'offers', component: OffersComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'products', component: ProductListComponent },
@@ -37,7 +39,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      onSameUrlNavigation: 'reload',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
