@@ -56,12 +56,12 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 Cart_col my-3 my-md-3 text-md-right">
+      <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 Cart_col my-3 my-md-3 text-md-right">
         <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold"
           [disabled]="(cart$ | async).length === 0" (click)="proceedToCheckout()">
           Proceed to checkout
         </button>
-      </div>
+      </div> -->
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 Cart_col my-3 my-md-3">
         <div class="table-responsive">
           <table class="table cart_table">
@@ -91,7 +91,7 @@
                 <td class="cart_count">
                   <div class="quantity">
                     <input type="number" min="1" max="10" step="1" [value]="item.quantity"
-                      (change)="onChangeQty(item, $event.target['value'])" />
+                      (change)="onChangeQty(item, $event.target['value'])" disabled />
                     <div class="quantity__btn quantity__btn--up" (click)="
                         onChangeQty(
                           item,

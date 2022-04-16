@@ -36,17 +36,20 @@
             <h4 class="font-weight-bold hd_font under_line_hd mb-4">Product Categories</h4>
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link pl-0" routerLink="." [queryParams]="{animal_category: 2}" queryParamsHandling="merge"
-                  [ngClass]="{'font-weight-bold': animalCategory === 2}">
+                <a class="nav-link pl-0" routerLink="."
+                  [queryParams]="{animal_category: 2,service_category: null,service_subcategory: null}"
+                  queryParamsHandling="merge" [ngClass]="{'font-weight-bold': animalCategory === 2}">
                   Cat Food
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pl-0" routerLink="." [queryParams]="{animal_category: 1}" queryParamsHandling="merge"
-                  [ngClass]="{'font-weight-bold': animalCategory === 1}">Dog Food</a>
+                <a class="nav-link pl-0" routerLink="."
+                  [queryParams]="{animal_category: 1,service_category: null,service_subcategory: null}"
+                  queryParamsHandling="merge" [ngClass]="{'font-weight-bold': animalCategory === 1}">Dog Food</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pl-0" routerLink="." [queryParams]="{animal_category: null}"
+                <a class="nav-link pl-0" routerLink="."
+                  [queryParams]="{animal_category: null,service_category: null,service_subcategory: null}"
                   queryParamsHandling="merge" [ngClass]="{'font-weight-bold': !animalCategory}">Uncategorized</a>
               </li>
             </ul>
