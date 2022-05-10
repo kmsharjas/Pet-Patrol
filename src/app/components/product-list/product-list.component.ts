@@ -43,6 +43,9 @@ export class ProductListComponent implements OnInit {
         this.minPrice = +params.get('min_price');
         this.maxPrice = +params.get('max_price');
 
+        const search = params.get('search');
+        if (search) return this.productService.search(search);
+
         return this.productService.getProducts({ ...params['params'], sort });
       })
     );

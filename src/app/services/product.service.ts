@@ -30,6 +30,25 @@ export class ProductService {
       );
   }
 
+  search(search: string) {
+    return this.http
+      .get<Product[]>(`${this.apiRoot}/search`, {
+        params: { search },
+      })
+      .pipe(
+        map((products) =>
+          products.map((product) => {
+            if (/[0-9]+%/.test(product.offertitle)) {
+              product.actualPrice = product.price;
+              const off = parseInt(product.offertitle.match(/[0-9]+/)[0], 10);
+              product.price -= (product.price * off) / 100;
+            }
+            return product;
+          })
+        )
+      );
+  }
+
   getProduct(id: number) {
     return this.http
       .get<Product>(`${this.apiRoot}/listproductsbyid/${id}`)

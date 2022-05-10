@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   message?: string;
   error?: string;
   error2?: string;
+  otpMsg?: string;
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit {
   getOTP() {
     this.error = undefined;
     this.message = undefined;
+
     this.loginForm.controls['otp'].reset();
     const { mobile } = this.loginForm.value;
     console.log(mobile);
@@ -53,8 +55,9 @@ export class LoginComponent implements OnInit {
       (res) => {
         console.log(res);
         if (res === 'no such user') {
+          this.otpMsg = '';
           this.error = 'We cannot find an account with this mobile number.';
-        }
+        } else this.otpMsg = 'OTP has been sent to your email';
       },
       (err) => {
         console.log(err);

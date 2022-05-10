@@ -32,6 +32,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyordersComponent } from './components/myorders/myorders.component';
 import { OffersComponent } from './components/offers/offers.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { OffersComponent } from './components/offers/offers.component';
     AddressComponent,
     MyordersComponent,
     OffersComponent,
+    WishlistComponent,
   ],
   imports: [
     BrowserModule,

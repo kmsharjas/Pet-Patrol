@@ -9,6 +9,7 @@ import {
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -28,7 +29,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private mainservices: MainService,
     private userService: UserService,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -42,5 +44,10 @@ export class HeaderComponent implements OnInit {
     );
 
     // this.cartQty$.subscribe(console.log);
+  }
+
+  onSearch(val) {
+    // console.log(val);
+    this.router.navigate(['/products'], { queryParams: { search: val } });
   }
 }

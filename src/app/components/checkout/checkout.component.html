@@ -87,6 +87,12 @@
                 <p class="mb-0 font-weight-bold">{{ TotPrice| currency: 'INR' }}</p>
               </div>
               <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 my-3 my-md-3 order_col">
+                <p class="mb-0 font-weight-bold">Shipping Charges</p>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-3 my-md-3 order_col text-md-right">
+                <p class="mb-0 font-weight-bold">{{ 0| currency: 'INR' }}</p>
+              </div>
+              <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 my-3 my-md-3 order_col">
                 <h4 class="mb-0 font-weight-bold gr_color">Total</h4>
               </div>
               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-3 my-md-3 order_col text-md-right">
@@ -135,7 +141,7 @@
               </div> -->
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 my-3 my-md-3">
                 <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold"
-                  (click)="placeOrder()">Place
+                  (click)="placeOrder()" [disabled]="addressForm?.addressForm?.invalid">Place
                   order</button>
               </div>
             </div>

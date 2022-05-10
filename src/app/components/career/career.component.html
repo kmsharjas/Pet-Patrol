@@ -34,42 +34,44 @@
         <div class="card_personal">
           <h4 class="hd_font font-weight-bold">Work With us</h4>
           <p class="mb-5 gr_color font-weight-bold">We offer quick &amp; easy services for cats and dogs</p>
-          <form>
+          <form [formGroup]="careerForm">
             <div class="row">
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
                 <div class="form-group">
                   <label class="font-weight-bold">First Name *</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="first_name">
                 </div>
               </div>
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
                 <div class="form-group">
                   <label class="font-weight-bold">Last Name *</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="last_name">
                 </div>
               </div>
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
                 <div class="form-group">
                   <label class="font-weight-bold">Email address</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="mail">
                 </div>
               </div>
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
                 <div class="form-group">
                   <label class="font-weight-bold">Phone</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="phone">
                 </div>
               </div>
 
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
                 <div class="form-group">
                   <label class="font-weight-bold">Upload Resume</label>
-                  <input type="file" class="form-control">
+                  <input type="file" formControlName="file" class="form-control" #fileInput
+                    (change)="onFileSelect(fileInput)">
                 </div>
               </div>
 
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
-                <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold">Submit</button>
+                <button type="submit" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold"
+                  (click)="Submit(careerForm)">Submit</button>
               </div>
 
             </div>

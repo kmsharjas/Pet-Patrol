@@ -11,7 +11,8 @@
                   <div class="header-content">
                     <div class="line"></div>
                     <h4 class="text-white">We Make your pets happy</h4>
-                    <h1 class="hd_font text-white">Find the best products for your pet</h1>
+                    <h1 class="hd_font text-white">Under Maintenance For orders/queries contact 07736004555 or write us
+                      to support@petpatrol.co.in</h1>
                     <a type="button" routerLink="products" class="btn btn_banner my-3 my-md-3">Shop Now</a>
                   </div>
                 </div>
@@ -26,7 +27,8 @@
                   <div class="header-content">
                     <div class="line"></div>
                     <h4 class="text-white">We Make your pets happy</h4>
-                    <h1 class="hd_font text-white">Find the best products for your pet</h1>
+                    <h1 class="hd_font text-white">Under Maintenance For orders/queries contact 07736004555 or write us
+                      to support@petpatrol.co.in</h1>
                     <a type="button" routerLink="products" class="btn btn_banner my-3 my-md-3">Shop Now</a>
                   </div>
                 </div>
@@ -83,7 +85,14 @@
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 my-3 text-center text-md-right">
             <h3 class="mb-0 font-weight-bold hd_font">Our Dog Food</h3>
             <p class="mb-0">Fresh food that delivers nutritions for your doggy pet. </p>
-            <button type="button" class="btn btn_banner my-3 my-md-3" routerLink="product">Shop Now</button>
+            <button type="button" class="btn btn_banner my-3 my-md-3" routerLink="products" [queryParams]="{
+                                  animal_category: dogCategory,
+                                  service_category: null,
+                                  service_subcategory: null,
+                                  packaging_type: null,
+                                  min_price: null,
+                                  max_price: null
+                                }" queryParamsHandling="merge">Shop Now</button>
           </div>
         </div>
       </div>
@@ -95,7 +104,14 @@
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 my-3 text-center text-md-left">
             <h3 class="mb-0 font-weight-bold hd_font">Our Cat Food</h3>
             <p class="mb-0">Mouthwatering entrees your kitten loves with cat food variety pack. </p>
-            <button type="button" class="btn btn_banner my-3 my-md-3" routerLink="product">Shop Now</button>
+            <button type="button" class="btn btn_banner my-3 my-md-3" routerLink="products" [queryParams]="{
+                                  animal_category: catCategory,
+                                  service_category:null,
+                                  service_subcategory: null,
+                                  packaging_type: null,
+                                  min_price: null,
+                                  max_price: null
+                                }" queryParamsHandling="merge">Shop Now</button>
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 my-3 aos-init aos-animate" data-aos="fade-left"
             data-aos-offset="300" data-aos-easing="ease-in-sine">

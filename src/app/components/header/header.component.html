@@ -16,7 +16,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"><img src="assets/img/call.png" class="img-fluid mr-3" />+91-904-847-7007</a>
+            <a class="nav-link"><img src="assets/img/call.png" class="img-fluid mr-3" />+91-773-600-4555</a>
           </li>
         </ul>
       </div>
@@ -31,7 +31,8 @@
                 <div class="form-row align-items-center">
                   <div class="col-auto search_col">
                     <div class="input-group">
-                      <input type="text" class="form-control border-0 bg-transparent" placeholder="Search" />
+                      <input type="text" class="form-control border-0 bg-transparent" placeholder="Search" #searchInput
+                        (keyup.enter)="onSearch(searchInput.value)" />
                       <div class="input-group-prepend">
                         <div class="input-group-text border-0 bg-transparent">
                           <i class="fa fa-search" aria-hidden="true"></i>
@@ -60,7 +61,7 @@
     <a class="navbar-brand" href="index.html">
       <img src="assets/img/logo.png" class="img-fluid" />
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    <button class="navbar-toggler" #navBtn type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -99,7 +100,7 @@
                                   packaging_type: null,
                                   min_price: null,
                                   max_price: null
-                                }" queryParamsHandling="merge" (click)="isOpen = !isOpen">
+                                }" queryParamsHandling="merge" (click)="isOpen = !isOpen;navBtn.click()">
                                 <p class="font-weight-bold mb-2">
                                   {{ category.service }}
                                 </p>
@@ -113,7 +114,7 @@
                                   min_price: null,
                                   max_price: null
                                 }" queryParamsHandling="merge" *ngFor="let sub of category.items1"
-                                class="dropdown-item" (click)="isOpen = !isOpen">
+                                class="dropdown-item" (click)="isOpen = !isOpen;navBtn.click()">
                                 <i class="fa fa-paw mr-2" aria-hidden="true"></i>
                                 {{ sub.subcategory }}
                               </a>
@@ -137,29 +138,29 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="offers">Offers</a>
+          <a class="nav-link" routerLink="offers" (click)="navBtn.click()">Offers</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="about">About</a>
+          <a class="nav-link" routerLink="about" (click)="navBtn.click()">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="blogs">Blog</a>
+          <a class="nav-link" routerLink="blogs" (click)="navBtn.click()">Blog</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="career">Career</a>
+          <a class="nav-link" routerLink="career" (click)="navBtn.click()">Career</a>
         </li>
         <li class="nav-item d_none_mob">
-          <a *ngIf="!(user$ | async)" class="nav-link pl-0" routerLink="/login">
+          <a *ngIf="!(user$ | async)" class="nav-link pl-0" routerLink="/login" (click)="navBtn.click()">
             <img src="assets/img/sgin-in.png" class="img-fluid mr-3" />
             Sign In
           </a>
-          <a *ngIf="user$ | async as user" class="nav-link pl-0" routerLink="/account">
+          <a *ngIf="user$ | async as user" class="nav-link pl-0" routerLink="/account" (click)="navBtn.click()">
             <img src="assets/img/sgin-in.png" class="img-fluid mr-3" />
             {{ user.first_name }}
           </a>
         </li>
         <li class="nav-item cart_link d_none_mob">
-          <a class="nav-link" href="cart.html">
+          <a class="nav-link" routerLink="/cart" (click)="navBtn.click()">
             <img src="assets/img/shopping-cart.png" class="img-fluid mr-3" />
             <span class="cart_count">{{ cartQty$ | async }}</span></a>
         </li>

@@ -16,6 +16,8 @@ import { OrderResponseComponent } from './components/order-response/order-respon
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { RegisterComponent } from './components/register/register.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { CheckoutGuard } from './guards/checkout.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,12 +32,17 @@ const routes: Routes = [
   { path: 'products/:id', component: ProductDetailComponent },
   { path: 'cart', component: CartComponent },
   { path: 'account', component: AccountComponent },
-  { path: 'checkout', component: CheckoutComponent },
+  {
+    path: 'checkout',
+    canActivate: [CheckoutGuard],
+    component: CheckoutComponent,
+  },
   { path: 'orderResponse', component: OrderResponseComponent },
   { path: 'career', component: CareerComponent },
   { path: 'blogs', component: BlogsComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'orders', component: MyordersComponent },
+  { path: 'wishlist', component: WishlistComponent },
 ];
 
 @NgModule({

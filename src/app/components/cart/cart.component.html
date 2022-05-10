@@ -171,7 +171,7 @@
       </div>
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 Cart_col my-3 my-md-3 text-md-right">
         <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold"
-          [disabled]="(cart$ | async).length === 0" (click)="proceedToCheckout()">
+          [disabled]="(cart$ | async)?.length === 0" (click)="proceedToCheckout()">
           Proceed to checkout
         </button>
       </div>

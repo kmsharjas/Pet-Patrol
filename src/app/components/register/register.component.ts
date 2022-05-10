@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   message?: string;
   error?: string;
   error2?: string;
+  otpMsg: string;
 
   constructor(
     private fb: FormBuilder,
@@ -41,6 +42,7 @@ export class RegisterComponent implements OnInit {
     this.message = undefined;
 
     this.error2 = undefined;
+
     const data = this.RegisterForm.value;
     // var id = this.RegisterForm.value.id;
     console.log(data);
@@ -55,9 +57,10 @@ export class RegisterComponent implements OnInit {
     this.userService.regOtp(jsn).subscribe((res) => {
       console.log(res);
       if (res === 'already registered number') {
+        this.otpMsg = '';
         this.error2 = 'already registered number';
         // this.error2 = 'This mobile number is already in use.';
-      }
+      } else this.otpMsg = 'OTP has been sent to your email';
     });
   }
 

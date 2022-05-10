@@ -1,31 +1,201 @@
-<section class="">
+<!-- ----------------------------inner banner start---------------------------- -->
+<section class="comm_bnr_bg">
   <div class="container">
-    <div class="row" style="padding-top: 50px;">
-      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 comm_banner_col text-center">
-        <div class="sucess-message my-3">
-          <div class="message_icon">
-            <!-- <img src="assets/img/sucess.png" class="" height="200"> -->
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 comm_banner_col">
+        <h1 class="font-weight-bold hd_font text-white">Our Products</h1>
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link active text-white px-0" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white">|</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white px-0">Shop</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="sub_bnrt_img">
+      <img src="assets/img/cat&amp;dog.png" class="img-fluid" alt="inner banner image">
+    </div>
+  </div>
+  <img src="assets/img/inner-bnr-bottom.png" class="img-fluid comm_bnr_shape" width="100%" alt="shape">
+</section>
+<!-- ----------------------------inner banner end---------------------------- -->
+<!------------------------------ shop product start---------------------------- -->
+<section class="shop_bg position-relative">
+  <img src="assets/img/bg-trans.png" class="img-fluid shop_top_bg">
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-lg-4 col-md-4 col-sm-12 col-12 order-md-2 order-sm-1 order-1">
+        <div class="card border-0">
+          <div class="card-body py-0">
+            <h4 class="font-weight-bold hd_font under_line_hd mb-4">Product Categories</h4>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link pl-0" routerLink="."
+                  [queryParams]="{animal_category: 2,service_category: null,service_subcategory: null,search:null}"
+                  queryParamsHandling="merge" [ngClass]="{'font-weight-bold': animalCategory === 2}">
+                  Cat Food
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link pl-0" routerLink="."
+                  [queryParams]="{animal_category: 1,service_category: null,service_subcategory: null,search:null}"
+                  queryParamsHandling="merge" [ngClass]="{'font-weight-bold': animalCategory === 1}">Dog Food</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link pl-0" routerLink="."
+                  [queryParams]="{animal_category: null,service_category: null,service_subcategory: null,search:null}"
+                  queryParamsHandling="merge" [ngClass]="{'font-weight-bold': !animalCategory}">Uncategorized</a>
+              </li>
+            </ul>
+            <h4 class="font-weight-bold hd_font under_line_hd my-4">Packaging Type</h4>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link pl-0" routerLink="." [queryParams]="{packaging_type: null,search:null}"
+                  queryParamsHandling="merge" [ngClass]="{'font-weight-bold': !packagingType}">All</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link pl-0" routerLink="." [queryParams]="{packaging_type: 1,search:null}"
+                  queryParamsHandling="merge" [ngClass]="{'font-weight-bold': packagingType === 1}">Can</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link pl-0" routerLink="." [queryParams]="{packaging_type: 2,search:null}"
+                  queryParamsHandling="merge" [ngClass]="{'font-weight-bold': packagingType === 2}">Tray</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link pl-0" routerLink="." [queryParams]="{packaging_type: 3,search:null}"
+                  queryParamsHandling="merge" [ngClass]="{'font-weight-bold': packagingType === 3}">Box</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link pl-0" routerLink="." [queryParams]="{packaging_type: 4,search:null}"
+                  queryParamsHandling="merge" [ngClass]="{'font-weight-bold': packagingType === 4}">Roll</a>
+              </li>
+            </ul>
+            <h4 class="font-weight-bold hd_font under_line_hd my-4">Price</h4>
+            <div class="form-check">
+              <a class="nav-link p-0" routerLink="." [queryParams]="{min_price: null ,max_price: null,search:null}"
+                queryParamsHandling="merge">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                  [checked]="!minPrice && !maxPrice">
+                <label class="form-check-label" for="exampleRadios1">
+                  All
+                </label>
+              </a>
+            </div>
+            <div class="form-check">
+              <a class="nav-link p-0" routerLink="." [queryParams]="{min_price: null ,max_price: 200,search:null}"
+                queryParamsHandling="merge">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                  [checked]="maxPrice === 200">
+                <label class="form-check-label" for="exampleRadios1">
+                  Less than ₹200
+                </label>
+              </a>
+            </div>
+            <div class="form-check my-3">
+              <a class="nav-link p-0" routerLink="." [queryParams]="{min_price: 200 ,max_price: 300,search:null}"
+                queryParamsHandling="merge">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"
+                  [checked]="maxPrice === 300">
+                <label class="form-check-label" for="exampleRadios2">
+                  ₹200 to 300
+                </label>
+              </a>
+            </div>
+            <div class="form-check my-3">
+              <a class="nav-link p-0" routerLink="." [queryParams]="{min_price: 300 ,max_price: 400,search:null}"
+                queryParamsHandling="merge">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3"
+                  [checked]="maxPrice === 400">
+                <label class="form-check-label" for="exampleRadios3">
+                  ₹300 to 400
+                </label>
+              </a>
+            </div>
+            <div class="form-check my-3">
+              <a class="nav-link p-0" routerLink="." [queryParams]="{min_price: 400 ,max_price: 500,search:null}"
+                queryParamsHandling="merge">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4"
+                  [checked]="maxPrice === 500">
+                <label class="form-check-label" for="exampleRadios4">
+                  ₹400 to 500
+                </label>
+              </a>
+            </div>
+            <div class="form-check my-3">
+              <a class="nav-link p-0" routerLink="." [queryParams]="{min_price: 500 ,max_price: null,search:null}"
+                queryParamsHandling="merge">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios6" value="option6"
+                  [checked]="minPrice === 500">
+                <label class="form-check-label" for="exampleRadios6">
+                  ₹500 &amp; Above
+                </label>
+              </a>
+            </div>
+            <div class="my-5">
+              <a href="">
+                <img src="assets/img/offer-shop1.png" class="img-fluid" alt="offer image">
+              </a>
+            </div>
           </div>
-          <h1 class="font-weight-bold head_font-family head_font">Watch this place.
-            Awesome offers are on the way.</h1>
-          <!-- <p class="text-uppercase">Watch this place.
-            Awesome offers are on the way.</p> -->
-          <!-- <button type="button" class="btn btn_common" routerLink="/products">Continue Shopping</button> -->
-          <a _ngcontent-pau-c45="" type="button" routerlink="products" class="btn btn_banner my-3 my-md-3"
-            href="/products">Continue Shopping</a>
         </div>
+      </div> -->
 
-        <!-- <div class="unsucess-message my-3">
-          <div class="message_icon">
-            <img src="assets/img/sad.png" class="" height="200">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-12 order-md-1 order-sm-12 order-2">
+        <div class="shop_card">
+          <div class="row">
+            <!-- <div class="col-lg-12 col-md-12 col-sm-6 col-12 mb-4">
+              <p class="mb-0 font-weight-bold">Showing 1–6 of 16 results</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-4">
+              <form>
+                <div class="form-group">
+                  <select (change)="sortFilter$.next($event.target['value'])" class="form-control">
+                    <option value="asc">Sort by price: low to high</option>
+                    <option value="desc">Sort by price: high to low</option>
+                  </select>
+                </div>
+              </form>
+            </div> -->
+            <ng-container *ngIf="products$ | async as products">
+              <div *ngFor="let product of products"
+                class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12product_col my-3 my-md-3">
+                <div class="card product_card">
+                  <div class="pd_imag">
+                    <span class="pd_off_tag">{{ product.offertitle | titlecase }}</span>
+                    <img [src]="product.thumbnail_img" class="img-fluid product_image" alt="product image">
+                  </div>
+                  <div class="card-body prduct_body text-center">
+                    <p class="mb-0 font-weight-bold shop_ht">{{ product.name }}</p>
+                    <p class="mb-0">
+                      <small *ngIf="product.actualPrice">
+                        <span class="text-muted mr-2"><s>{{ product.actualPrice | currency: 'INR' }}</s></span>
+                      </small>
+                      <span class="text-danger font-weight-bold">
+                        {{ product.price | currency: 'INR' }}
+                      </span>
+                    </p>
+                    <button [routerLink]="['/products',product.id]" type="button"
+                      class="btn btn_shop_now my-3 my-md-3">Shop
+                      Now</button>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="products?.length===0">
+                <h1 class="text-center">No Results Found.....</h1>
+              </div>
+            </ng-container>
+
+
           </div>
-          <h1 class="font-weight-bold head_font-family head_font">Order Failed</h1>
-          <p class="text-uppercase">We were unable to process your order.</p>
-          <button type="button" class="btn btn_common" routerLink="/products">Back to Home</button>
-        </div> -->
-
-
+        </div>
       </div>
     </div>
   </div>
+  <img src="assets/img/bg-trans.png" class="img-fluid shop_bottom_bg">
 </section>

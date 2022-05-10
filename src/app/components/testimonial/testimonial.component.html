@@ -62,28 +62,29 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form [formGroup]="distributorForm">
           <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 modal_col">
               <div class="form-group">
                 <label class="font-weight-bold">Name</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" formControlName="name">
               </div>
             </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 modal_col">
               <div class="form-group">
                 <label class="font-weight-bold">Email</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" formControlName="email">
               </div>
             </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 modal_col">
               <div class="form-group">
                 <label class="font-weight-bold">Mobile number</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" formControlName="mobile" maxlength=10
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
               </div>
             </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 modal_col">
-              <button type="button" class="btn btn_yellow_fm my-3 my-md-3">Apply now</button>
+              <button type="button" class="btn btn_yellow_fm my-3 my-md-3" (click)="contactMail()">Apply now</button>
             </div>
           </div>
         </form>

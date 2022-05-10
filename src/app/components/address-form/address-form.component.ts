@@ -22,7 +22,13 @@ export class AddressFormComponent implements OnInit {
   constructor(private fb: FormBuilder, private addressService: AddressService) {
     this.addressForm = this.fb.group({
       mobile: ['', Validators.required],
-      email: ['', Validators.required],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
+        ],
+      ],
       flat_no: ['', Validators.required],
       landmark: ['', Validators.required],
       city: ['', Validators.required],

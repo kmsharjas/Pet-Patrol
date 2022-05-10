@@ -31,6 +31,7 @@ export class CheckoutComponent implements OnInit {
   states?: { id: number; state: string }[];
   addressType?: { id: number; type: string }[];
   paymentMethod: 'COD' | 'Online';
+  order: Order;
 
   constructor(
     private userService: UserService,
@@ -63,7 +64,8 @@ export class CheckoutComponent implements OnInit {
     this.cartItems = this.cartService.getCartItems();
     this.length = this.cartItems?.length;
     this.TotPrice = this.cartItems?.reduce((a, b) => a + b.total, 0);
-    this.grandTotal = this.TotPrice + 50;
+    // this.grandTotal = this.TotPrice + 50;
+    this.grandTotal = this.TotPrice + 0;
 
     this.addressService.coutries$.subscribe((res) => (this.countries = res));
     this.addressService.states$.subscribe((res) => (this.states = res));
@@ -118,20 +120,88 @@ export class CheckoutComponent implements OnInit {
     console.log(order);
 
     this.orderService.createOrder(order).subscribe((res) => {
-      this.cartService.clearCart();
-      if (this.paymentMethod === 'COD')
-        return this.rout.navigate(['/orderResponse'], {
-          queryParams: { response: 'success' },
-        });
+      if (this.paymentMethod !== 'COD') return this.createRzpayOrder(res);
 
-      return false;
+      this.cartService.clearCart();
+      return this.rout.navigate(['/orderResponse'], {
+        queryParams: { response: 'success' },
+      });
+
+      // return false;
 
       // console.log(order);
       // console.log(res);
-      // this.order = res;
-      // this.createRzpayOrder(res);
     });
     // get form value
     // call api to create order_id
+  }
+
+  createRzpayOrder(response) {
+    console.log('createRzpayOrder', response);
+    // call api to create response_id
+    this.payWithRazor(response);
+  }
+
+  payWithRazor(payment) {
+    // console.log(payment);
+
+    // rzp_test_vIbFnBrsNcfxda", "QXu9nUePM3jWaJ6pAwpsAt2q
+    const options: any = {
+      key: 'rzp_test_rIujksmYb0FaSx',
+      amount: payment.amount * 100, // amount should be in paise format to display Rs 1255 without decimal point
+      currency: 'INR',
+      name: '', // company name or product name
+      description: '', // product description
+      image: 'src/assets/img/logo.png', // company logo or product image
+      order_id: payment.order_id, // order_id created by you in backend
+      modal: {
+        // We should prevent closing of the form when esc key is pressed.
+        escape: false,
+      },
+      notes: {
+        // include notes if any
+      },
+      theme: {
+        color: '#0c238a',
+      },
+    };
+    options.handler = (response, error) => {
+      options.response = response;
+      // console.log(response);
+      console.log(error);
+      // console.log(options);
+
+      if (error)
+        return this.ngZone.run(() => {
+          this.cartService.clearCart();
+          this.rout.navigate(['/orderResponse'], {
+            queryParams: { response: 'error' },
+          });
+        });
+
+      if (!error)
+        this.orderService
+          .capturePayment({ ...response, amount: payment.amount * 100 })
+          .subscribe((res) => {
+            // console.log(res);
+            this.cartService.clearCart();
+            // navigate with query params
+            this.ngZone.run(() => {
+              this.rout.navigate(['/orderResponse'], {
+                queryParams: { response: 'success' },
+              });
+            });
+          });
+
+      // call your backend api to verify payment signature & capture transaction
+    };
+    options.modal.ondismiss = () => {
+      // handle the case when user closes the form while transaction is in progress
+      console.log('Transaction cancelled.');
+    };
+    // console.log(options);
+
+    const rzp = new this.winRef.nativeWindow.Razorpay(options);
+    rzp.open();
   }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { AnimalCategory } from 'src/app/models/navCategory.model';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +10,19 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  animalCategory: AnimalCategory[] = [];
+  dogCategory: any;
+  catCategory: any;
+  constructor(private mainservices: MainService) {}
 
   ngOnInit(): void {
     AOS.init({ duration: 1200 });
+    this.mainservices.getNavList().subscribe((res) => {
+      console.log(res);
+      this.animalCategory = res;
+      this.dogCategory = this.animalCategory.find((x) => x.animal === 'Dog').id;
+      this.catCategory = this.animalCategory.find((x) => x.animal === 'Cat').id;
+    });
   }
 
   customOptions: OwlOptions = {
