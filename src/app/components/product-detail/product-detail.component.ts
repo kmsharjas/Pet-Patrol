@@ -5,6 +5,8 @@ import { CartItem } from 'src/app/models/cart.model';
 import { Product } from 'src/app/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
+import { UserService } from 'src/app/services/user.service';
+import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -17,6 +19,8 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
+    private wishlistservice: WishlistService,
+    private userservice: UserService,
     private route: ActivatedRoute,
     private cartService: CartService,
     private router: Router
@@ -53,5 +57,14 @@ export class ProductDetailComponent implements OnInit {
 
     this.cartService.addToCart(cartItem);
     this.router.navigate(['/cart']);
+  }
+
+  addToWish(product: Product) {
+    // console.log(product);
+    // this.userservice.getUser();
+    // console.log(this.userservice.getUser());
+    const user = this.userservice.getUser();
+    this.wishlistservice.addToWish(product, user.id);
+    this.router.navigate(['/wishlist']);
   }
 }

@@ -36,91 +36,45 @@
               <tr>
                 <th scope="col" class="hd_font">Products</th>
                 <th scope="col" class="hd_font">Price</th>
-                <th scope="col" class="hd_font">Add to Cart</th>
+                <!-- <th scope="col" class="hd_font">Add to Cart</th> -->
                 <th scope="col" class="hd_font">Remove</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let prd of products">
               <tr>
-                <th scope="row">
+                <td scope="row" routerLink="/products/{{prd.product_id_id}}">
                   <div class="media cart_tb_media">
                     <div class="cat_md_img">
-                      <img class="mr-3" src="assets/img/product3.png" alt="Generic placeholder image">
+                      <img class="mr-3" src="{{prd.product_image}}" alt="Generic placeholder image">
                     </div>
                     <div class="media-body">
-                      <p class="mb-0">Almo Nature Daily Boosted Sale</p>
+                      <p class="mb-0">{{prd.name}}</p>
                     </div>
                   </div>
-                </th>
-                <td>$89.00</td>
-                <td>
+                </td>
+                <td>{{prd.price|currency:'INR'}}</td>
+                <!-- <td>
                   <a>
                     <img src="assets/img/plus.png" style="    height: 20px;
     width: 20px;" class="img-fluid" alt="add">
                   </a>
-                </td>
-                <td>
+                </td> -->
+                <td (click)="delete(prd)">
                   <a>
                     <img src="assets/img/cancel.png" class="img-fluid" alt="delete">
                   </a>
                 </td>
               </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media cart_tb_media">
-                    <div class="cat_md_img">
-                      <img class="mr-3" src="assets/img/product2.png" alt="Generic placeholder image">
-                    </div>
-                    <div class="media-body">
-                      <p class="mb-0">Almo Nature Daily Boosted Sale</p>
-                    </div>
-                  </div>
-                </th>
-                <td>$89.00</td>
-                <td>
-                  <a>
-                    <img src="assets/img/plus.png" style="    height: 20px;
-    width: 20px;" class="img-fluid" alt="add">
-                  </a>
-                </td>
-                <td>
-                  <a>
-                    <img src="assets/img/cancel.png" class="img-fluid" alt="delete">
-                  </a>
-                </td>
-              </tr>
-              <tr class="btm_line">
-                <th scope="row">
-                  <div class="media cart_tb_media">
-                    <div class="cat_md_img">
-                      <img class="mr-3" src="assets/img/product3.png" alt="Generic placeholder image">
-                    </div>
-                    <div class="media-body">
-                      <p class="mb-0">Almo Nature Daily Boosted Sale</p>
-                    </div>
-                  </div>
-                </th>
-                <td>$89.00</td>
-                <td>
-                  <a>
-                    <img src="assets/img/plus.png" style="    height: 20px;
-    width: 20px;" class="img-fluid" alt="add">
-                  </a>
-                </td>
-                <td>
-                  <a>
-                    <img src="assets/img/cancel.png" class="img-fluid" alt="delete">
-                  </a>
-                </td>
-              </tr>
+
             </tbody>
           </table>
         </div>
       </div>
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 Cart_col my-3 my-md-3 text-md-right">
-        <button type="button" class="btn btn_banner my-3 my-md-3 hd_font font-weight-bold mr-md-3">Continue
+        <button type="button" class="btn btn_banner my-3 my-md-3 hd_font font-weight-bold mr-md-3"
+          routerLink="/products">Continue
           Shopping</button>
-        <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold">Update Cart</button>
+        <!-- <button type="button" class="btn btn_yellow_fm my-3 my-md-3 hd_font font-weight-bold">Update Cart</button> -->
       </div>
     </div>
   </div>

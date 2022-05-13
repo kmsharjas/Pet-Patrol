@@ -57,7 +57,7 @@
     <div class="modal-content">
       <div class="modal-header border-0">
         <h5 class="modal-title hd_font font-weight-bold" id="exampleModalLongTitle">Become A Distributor</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn>
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -73,7 +73,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 modal_col">
               <div class="form-group">
                 <label class="font-weight-bold">Email</label>
-                <input type="text" class="form-control" formControlName="email">
+                <input type="email" class="form-control" formControlName="email">
               </div>
             </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 modal_col">
@@ -84,7 +84,8 @@
               </div>
             </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 modal_col">
-              <button type="button" class="btn btn_yellow_fm my-3 my-md-3" (click)="contactMail()">Apply now</button>
+              <button type="button" class="btn btn_yellow_fm my-3 my-md-3" (click)="contactMail(closeBtn)">Apply
+                now</button>
             </div>
           </div>
         </form>

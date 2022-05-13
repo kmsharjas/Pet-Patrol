@@ -66,6 +66,8 @@ export class AccountComponent implements OnInit {
     if (order) {
       this.selection = 'track';
       this.orderTrack = order;
+      console.log(this.orderTrack);
+
       // this.showReview(this.orderTrack);
     } else {
       this.selection = 'order';

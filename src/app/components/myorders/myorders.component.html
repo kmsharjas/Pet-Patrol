@@ -16,12 +16,7 @@
     <p class="mb-0 font-weight-bold my-2 my-md-0 text-danger" *ngIf="order.payment.cancelled_at">
       ORDER CANCELLED
     </p>
-    <button class="btn btn_red_order my-2 my-md-0" *ngIf="checkExpry(order)" (click)="cancelOrder(order)">
-      Cancel Order
-    </button>
-    <button class="btn my-2 my-md-0" (click)="onTrack(order)" *ngIf="order.order_status !== 'cancelled'">
-      Track Order
-    </button>
+
   </li>
   <li class="list-group-item my-0">
     <div class="table-responsive">
@@ -45,6 +40,15 @@
           </tr>
         </tbody>
       </table>
+      <div class="text-md-right">
+        <button class="btn btn_yellow_fm my-2 my-md-0 mr-2" *ngIf="checkExpry(order)" (click)="cancelOrder(order)">
+          Cancel Order
+        </button>
+        <button class="btn btn_green_fm my-2 my-md-0" (click)="onTrack(order)"
+          *ngIf="order.order_status !== 'CANCELLED'">
+          Track Order
+        </button>
+      </div>
     </div>
   </li>
 </ul>

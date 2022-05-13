@@ -33,6 +33,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyordersComponent } from './components/myorders/myorders.component';
 import { OffersComponent } from './components/offers/offers.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { TermsComponent } from './components/terms/terms.component';
+import { CancellationComponent } from './components/cancellation/cancellation.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +65,9 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     MyordersComponent,
     OffersComponent,
     WishlistComponent,
+    TermsComponent,
+    CancellationComponent,
+    PrivacyComponent,
   ],
   imports: [
     BrowserModule,

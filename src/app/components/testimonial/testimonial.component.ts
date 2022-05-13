@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import * as AOS from 'aos';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -9,11 +9,18 @@ import { MiscService } from 'src/app/services/misc.service';
   styleUrls: ['./testimonial.component.css'],
 })
 export class TestimonialComponent implements OnInit {
+  @ViewChild('closeBtn') closeBtn: ElementRef;
   distributorForm: FormGroup;
   constructor(private fb: FormBuilder, private miscService: MiscService) {
     this.distributorForm = this.fb.group({
       name: [null, Validators.required],
-      email: [null, Validators.required],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
+        ],
+      ],
       mobile: [null, Validators.required],
     });
   }
@@ -22,7 +29,7 @@ export class TestimonialComponent implements OnInit {
     AOS.init({ duration: 1200 });
   }
 
-  contactMail() {
+  contactMail(closeBtn) {
     console.log(this.distributorForm.value);
     let jsn = {
       name: this.distributorForm.value.name,
@@ -33,7 +40,10 @@ export class TestimonialComponent implements OnInit {
 
     this.miscService.contactMail(jsn).subscribe((res) => {
       console.log(res);
+      if (res === 'sent')
+        alert("Thanks for your interest. We'll get back to you soon.");
       this.distributorForm.reset();
+      this.closeBtn.nativeElement.click();
     });
   }
 

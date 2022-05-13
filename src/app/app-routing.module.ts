@@ -4,6 +4,7 @@ import { AboutComponent } from './components/about/about.component';
 import { AccountComponent } from './components/account/account.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogsComponent } from './components/blogs/blogs.component';
+import { CancellationComponent } from './components/cancellation/cancellation.component';
 import { CareerComponent } from './components/career/career.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
@@ -13,9 +14,11 @@ import { LoginComponent } from './components/login/login.component';
 import { MyordersComponent } from './components/myorders/myorders.component';
 import { OffersComponent } from './components/offers/offers.component';
 import { OrderResponseComponent } from './components/order-response/order-response.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { RegisterComponent } from './components/register/register.component';
+import { TermsComponent } from './components/terms/terms.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { CheckoutGuard } from './guards/checkout.guard';
 
@@ -43,6 +46,9 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'orders', component: MyordersComponent },
   { path: 'wishlist', component: WishlistComponent },
+  { path: 'privacy', component: PrivacyComponent },
+  { path: 'terms', component: TermsComponent },
+  { path: 'cancellation', component: CancellationComponent },
 ];
 
 @NgModule({

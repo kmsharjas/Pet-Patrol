@@ -159,39 +159,52 @@
               <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 order_track_col">
                   <ul class="timeline">
-                    <li class="timeline-item info">
+
+                    <li class="timeline-item" [ngClass]="{'info': orderTrack.payment.created_at}">
                       <div class="ml-3">
-                        <small class="text-muted">Mi., 12. März</small>
-                        <h4>Hallentraining Aktive</h4>
+                        <h4>Processing</h4>
+                        <p *ngIf="orderTrack.payment.created_at" class="text-secondary">
+                          We have received your order on {{ orderTrack.payment.created_at | date: 'medium' }}.
+                          <br> And it's being processing
+                        </p>
                       </div>
                     </li>
-                    <li class="timeline-item">
+
+                    <!-- <li class="timeline-item" [ngClass]="{'info': orderTrack.dispatched_at}">
                       <div class="ml-3">
-                        <small class="text-muted">Sa., 14. März</small>
-                        <h4>Altpapiersammlung</h4>
-                        <p>Helfer gesucht!</p>
+                        <h4>Shipped</h4>
+                        <p *ngIf="orderTrack.dispatched_at" class="text-secondary">
+                          Your order has been shipped on {{ orderTrack.dispatched_at | date: 'medium' }}.
+                          <br> We will notify you once your order is out for delivered.
+                        </p>
                       </div>
-                    </li>
-                    <li class="timeline-item">
+                    </li> -->
+
+                    <!-- <li class="timeline-item" [ngClass]="{'info': orderTrack.outfordelivery_at}">
                       <div class="ml-3">
-                        <small class="text-muted">So., 11. April</small>
-                        <h4>LL-Spieltag Frauen in Böblingen</h4>
-                        <p>Der Spieltag startet um 10 Uhr. Treffpunkt ist 8.30 Uhr. Helfer für Bewirtung gesucht.</p>
+                        <h4>Out for delivery</h4>
+                        <p *ngIf="orderTrack.outfordelivery_at" class="text-secondary">
+                          Your order is out for delivery on {{ orderTrack.outfordelivery_at | date: 'medium' }}.
+                          <br> We will notify you once your order is delivered.
+                        </p>
                       </div>
-                    </li>
-                    <li class="timeline-item warning">
+                    </li> -->
+
+                    <!-- <li class="timeline-item" [ngClass]="{'info': orderTrack.delivered_at}">
                       <div class="ml-3">
-                        <small class="text-muted">So., 25. Mai um 10 Uhr</small>
-                        <p>LL-Spieltag Frauen in Grafenau</p>
+                        <h4>Delivered</h4>
+                        <p *ngIf="orderTrack.delivered_at" class="text-secondary">
+                          Your order has been delivered on {{ orderTrack.delivered_at | date: 'medium' }}.
+                          <br> We hope you enjoyed your order.
+                        </p>
                       </div>
-                    </li>
-                    <li class="timeline-item warning">
-                      <div class="ml-3">
-                        <small class="text-muted">Mi., 25 Juli</small>
-                        <p>Abteilungssitzung</p>
-                      </div>
-                    </li>
+                    </li> -->
+
                   </ul>
+                  <!-- <button type="button" class="btn btn_common my-3 my-md-3" data-toggle="modal" *ngIf="isReview"
+                    data-target="#review-modal">Write a
+                    review</button> -->
+                  <!-- (click)="addreview()">Write a review</button> -->
                 </div>
               </div>
             </div>

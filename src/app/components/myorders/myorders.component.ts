@@ -43,15 +43,17 @@ export class MyordersComponent implements OnInit {
     const now = new Date().getTime();
     return !(
       expiry < now ||
-      order.order_status === 'cancelled' ||
+      order.order_status === 'CANCELLED' ||
       order.payment.dispatched_at
     );
   }
 
   cancelOrder(order: Order) {
     // cofirm cancel
+    console.log(order);
+
     if (!confirm('Are you sure you want to cancel this order?')) return;
-    order.order_status = 'cancelled';
+    order.order_status = 'CANCELLED';
     this.orderService
       .updateOrderStatus(order)
       .subscribe(() => this.refresh$.next(true));

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
@@ -9,6 +10,7 @@ import {
 } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-offers',
@@ -17,10 +19,13 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class OffersComponent implements OnInit {
   products$: Observable<Product[]>;
+  banner: any = [];
   sortFilter$: BehaviorSubject<'asc' | 'desc'> = new BehaviorSubject('asc');
+  apiRoot = environment.apiBaseUrl;
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -49,5 +54,9 @@ export class OffersComponent implements OnInit {
         });
       })
     );
+    this.http.get(this.apiRoot + '/listofferbanner').subscribe((res) => {
+      console.log(res);
+      this.banner = res;
+    });
   }
 }

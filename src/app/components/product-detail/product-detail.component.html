@@ -58,7 +58,7 @@
         </p>
         <div class="d-flex">
           <div class="quantity my-3">
-            <input type="number" min="1" max="10" step="1" value="1" #qty />
+            <input type="number" min="1" max="10" step="1" value="1" #qty disabled />
             <div class="quantity__btn quantity__btn--up"
               (click)="qty.value = +qty.value < 10 ? (+qty.value+1).toString() : '10'">
             </div>
@@ -70,7 +70,7 @@
             Add To Cart
           </button>
         </div>
-        <a href="">
+        <a (click)="addToWish(product)">
           <p class="yellow_color font-weight-bold">
             <i class="fa fa-heart-o mr-2" aria-hidden="true"></i>Add to wishlist
           </p>

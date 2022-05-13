@@ -20,8 +20,11 @@ export class OrderService {
   }
 
   updateOrderStatus(order: Order) {
+    console.log(order);
+
     const { id, order_status } = order;
-    return this.http.post(`${this.apiRoot}/updateorderstatus/${id}`, {order_status}); // prettier-ignore
+    // return this.http.post(`${this.apiRoot}/updateorderstatus/${id}`, {order_status}); // prettier-ignore
+    return this.http.post(`${this.apiRoot}/updateorderstatus`, {"order_id":id,order_status}); // prettier-ignore
   }
 
   listordersByuser(id: number) {

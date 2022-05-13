@@ -33,7 +33,7 @@
                     <div class="input-group">
                       <input type="text" class="form-control border-0 bg-transparent" placeholder="Search" #searchInput
                         (keyup.enter)="onSearch(searchInput.value)" />
-                      <div class="input-group-prepend">
+                      <div class="input-group-prepend" (click)="onSearch(searchInput.value)">
                         <div class="input-group-text border-0 bg-transparent">
                           <i class="fa fa-search" aria-hidden="true"></i>
                         </div>
