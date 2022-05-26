@@ -20,9 +20,11 @@ export class ProductService {
         map((products) =>
           products.map((product) => {
             if (/[0-9]+%/.test(product.offertitle)) {
-              product.actualPrice = product.price;
+              product.actualPrice = product.included_gst;
               const off = parseInt(product.offertitle.match(/[0-9]+/)[0], 10);
-              product.price -= (product.price * off) / 100;
+              // product.price -= (product.included_gst * off) / 100;
+              product.price =
+                product.included_gst - (product.included_gst * off) / 100;
             }
             return product;
           })
@@ -56,9 +58,10 @@ export class ProductService {
         map((res) => res[0]),
         map((product) => {
           if (/[0-9]+%/.test(product.offertitle)) {
-            product.actualPrice = product.price;
+            product.actualPrice = product.included_gst;
             const off = parseInt(product.offertitle.match(/[0-9]+/)[0], 10);
-            product.price -= (product.price * off) / 100;
+            product.price =
+              product.included_gst - (product.included_gst * off) / 100;
           }
           return product;
         })

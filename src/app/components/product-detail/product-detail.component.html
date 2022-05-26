@@ -40,9 +40,13 @@
             <!-- <li *ngFor="let img of product.image" [attr.data-thumb]="img.images" [attr.data-src]="img.images">
               <img [src]="img.images" class="" width="100%" />
             </li> -->
-            <li *ngIf="product.image[0] as img" [attr.data-thumb]="img.images" [attr.data-src]="img.images">
+            <!-- <li *ngIf="product.image[0] as img" [attr.data-thumb]="img.images" [attr.data-src]="img.images">
               <img [src]="img.images" class="" width="100%" />
-            </li>
+            </li> -->
+            <!-- <li *ngIf="product.thumbnail_img" [attr.data-thumb]="img.images" [attr.data-src]="img.images"> -->
+            <img [src]="product.thumbnail_img" class="" width="100%" />
+            <!-- </li> -->
+
           </ul>
         </div>
       </div>

@@ -44,15 +44,15 @@ export class OffersComponent implements OnInit {
         if (search) return this.productService.search(search);
 
         return this.productService.getProducts({ ...params['params'], sort });
-      }),
-      map((products) => {
-        return products.filter((product) => {
-          return (
-            product.offertitle === 'buy 1 get 1' ||
-            product.offertitle === 'Combo'
-          );
-        });
       })
+      // map((products) => {
+      //   return products.filter((product) => {
+      //     return (
+      //       product.offertitle === 'buy 2 get 2' ||
+      //       product.offertitle === 'Combo'
+      //     );
+      //   });
+      // })
     );
     this.http.get(this.apiRoot + '/listofferbanner').subscribe((res) => {
       console.log(res);

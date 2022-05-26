@@ -19,4 +19,5 @@ export interface CartItem {
   total: number;
   image: string;
   offerTitle?: 'N/A' | string;
+  offerQuantity?: number;
 }
