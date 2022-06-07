@@ -22,7 +22,9 @@ export class WishlistComponent implements OnInit {
   }
   delete(product) {
     console.log(product);
-
-    this.wishlistservice.removeWishItem(product.id);
+    confirm('Are you sure you want to delete this item from your wishlist?');
+    {
+      this.wishlistservice.removeWishItem(product.id);
+    }
   }
 }

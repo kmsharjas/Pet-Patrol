@@ -74,6 +74,7 @@
           *ngFor="let product of products$ |async" [routerLink]="['/products/'+product.id]">
           <div class="card product_card border-0">
             <div class="pd_imag">
+              <span class="pd_off_tag">{{ product.offertitle | uppercase }}</span>
               <img [src]="product.thumbnail_img" class="img-fluid product_image" alt="product image">
             </div>
             <div class="card-body prduct_body text-center">

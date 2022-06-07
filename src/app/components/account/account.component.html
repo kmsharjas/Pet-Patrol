@@ -54,6 +54,10 @@
                   class="list-group-item list-group-item-action border-0 rounded-0 cursor_hover"
                   [ngClass]="{'active': selection === 'order'}"><i class="fa fa-archive mr-3" aria-hidden="true"></i>My
                   Orders</a>
+                <a (click)="selection = 'wishlist'"
+                  class="list-group-item list-group-item-action border-0 rounded-0 cursor_hover"
+                  [ngClass]="{'active': selection === 'wishlist'}"><i class="fa fa-archive mr-3" aria-hidden="true"></i>
+                  Wish List</a>
                 <a (click)="selection = 'address'"
                   class="list-group-item list-group-item-action border-0 rounded-0 cursor_hover"
                   [ngClass]="{'active': selection === 'address'}"><i class="fa fa-address-book-o mr-3"
@@ -72,18 +76,18 @@
           <h4 class="hd_font font-weight-bold mb-4">Personal Information</h4>
           <form [formGroup]="profileForm">
             <div class="row">
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ads_fom_col">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ads_fom_col">
                 <div class="form-group">
                   <label class="font-weight-bold">First Name</label>
                   <input type="text" class="form-control ads_control" formControlName="first_name">
                 </div>
               </div>
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ads_fom_col">
+              <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ads_fom_col">
                 <div class="form-group">
                   <label class="font-weight-bold">Last Name</label>
                   <input type="text" class="form-control ads_control" formControlName="last_name">
                 </div>
-              </div>
+              </div> -->
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ads_fom_col">
                 <div class="form-group">
                   <label class="font-weight-bold">Email</label>
@@ -152,6 +156,12 @@
             </div>
           </div> -->
         </div>
+
+        <!-- <div class="card_order" *ngSwitchCase="'order'">
+          <h4 class="hd_font font-weight-bold mb-4">Wish List</h4>
+          <app-wishlist></app-wishlist>
+        </div> -->
+
         <div class="card_order_track" *ngSwitchCase="'track'">
           <h4 class="hd_font font-weight-bold mb-4">Track My Order</h4>
           <div class="acc_card card mb-3">

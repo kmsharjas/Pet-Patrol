@@ -184,7 +184,7 @@
                 class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12product_col my-3 my-md-3">
                 <div class="card product_card">
                   <div class="pd_imag">
-                    <span class="pd_off_tag">{{ product.offertitle | titlecase }}</span>
+                    <span class="pd_off_tag">{{ product.offertitle | uppercase }}</span>
                     <img [src]="product.thumbnail_img" class="img-fluid product_image" alt="product image">
                   </div>
                   <div class="card-body prduct_body text-center">

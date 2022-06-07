@@ -56,7 +56,7 @@ export class CheckoutComponent implements OnInit {
         // console.log(address);
         // check for empty object
         if (address.mobile === '') this.isnewAddress = true;
-        // console.log(this.isnewAddress);
+        console.log(this.isnewAddress);
         return address;
       })
     );

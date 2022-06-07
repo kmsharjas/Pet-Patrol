@@ -22,6 +22,8 @@ export class OffersComponent implements OnInit {
   banner: any = [];
   sortFilter$: BehaviorSubject<'asc' | 'desc'> = new BehaviorSubject('asc');
   apiRoot = environment.apiBaseUrl;
+  isBuyGet = false;
+  isFlat = false;
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
@@ -44,15 +46,16 @@ export class OffersComponent implements OnInit {
         if (search) return this.productService.search(search);
 
         return this.productService.getProducts({ ...params['params'], sort });
+      }),
+      map((products) => {
+        return products.filter((product) => {
+          return (
+            product.offertitle !== 'N/A' && product.offertitle !== 'NEW'
+            // product.offertitle === 'buy 2 get 1' ||
+            // product.offertitle === '50%off'
+          );
+        });
       })
-      // map((products) => {
-      //   return products.filter((product) => {
-      //     return (
-      //       product.offertitle === 'buy 2 get 2' ||
-      //       product.offertitle === 'Combo'
-      //     );
-      //   });
-      // })
     );
     this.http.get(this.apiRoot + '/listofferbanner').subscribe((res) => {
       console.log(res);
