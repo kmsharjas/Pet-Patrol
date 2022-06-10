@@ -30,6 +30,15 @@ export class CartComponent implements OnInit {
     );
   }
 
+  disableButton(offerTitle: string) {
+    return (
+      offerTitle != 'NEW' &&
+      offerTitle != 'New' &&
+      offerTitle != 'N/A' &&
+      !/[0-9]+%/.test(offerTitle)
+    );
+  }
+
   onChangeQty(item: CartItem, qty: number) {
     // const quantity = +(ev.target as HTMLInputElement).value;
     const quantity = qty;

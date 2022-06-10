@@ -43,7 +43,7 @@ const routes: Routes = [
   { path: 'orderResponse', component: OrderResponseComponent },
   { path: 'career', component: CareerComponent },
   { path: 'blogs', component: BlogsComponent },
-  { path: 'blog', component: BlogComponent },
+  { path: 'blogs/:id', component: BlogComponent },
   { path: 'orders', component: MyordersComponent },
   { path: 'wishlist', component: WishlistComponent },
   { path: 'privacy', component: PrivacyComponent },

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CartItem } from '../models/cart.model';
@@ -12,18 +13,28 @@ import { UserService } from './user.service';
 export class WishlistService {
   wishItems$: BehaviorSubject<Product[]> = new BehaviorSubject([]);
   baseUrl = environment.apiBaseUrl;
-  constructor(private userservice: UserService, private http: HttpClient) {
+  constructor(
+    private userservice: UserService,
+    private http: HttpClient,
+    private router: Router
+  ) {
     this.refreshWish();
   }
   addToWish(product: Product, user) {
     console.log(JSON.stringify(product) + ' ' + user);
-    return this.http
-      .post(`${this.baseUrl}/addtowishlist/${user}`, { product_id: product.id })
-      .subscribe();
-    // .subscribe((data) => {
-    //   console.log(data);
-    //   this.refreshWish();
-    // });
+    return (
+      this.http
+        .post(`${this.baseUrl}/addtowishlist/${user}`, {
+          product_id: product.id,
+        })
+        // .subscribe();
+        .subscribe((data) => {
+          // console.log(data);
+
+          // this.refreshWish();
+          this.router.navigate(['/wishlist']);
+        })
+    );
   }
 
   refreshWish() {

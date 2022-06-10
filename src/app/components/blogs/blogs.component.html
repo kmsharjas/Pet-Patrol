@@ -32,7 +32,7 @@
   <div class="container">
     <h3 class="text-center hd_font cm_hd font-weight-bold mb-5">Pet Care Blogs</h3>
     <div class="row justify-content-center">
-      <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 my-3 blog_col">
+      <!-- <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 my-3 blog_col">
         <div class="blog_card card border-0">
           <div class="blog_img position-relative">
             <div class="prd_ofr">
@@ -95,8 +95,24 @@
             <a routerLink="../" type="button" class="btn btn_shop_now my-3 my-md-3">Read More</a>
           </div>
         </div>
-      </div>
+      </div> -->
 
+      <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 my-3 blog_col" *ngFor="let blog of blogs$ | async">
+        <div class="blog_card card border-0">
+          <div class="blog_img position-relative">
+            <div class="prd_ofr">
+              <p class="mb-0">{{blog.datefield|date:'dd'}}</p>
+              <h4 class="mb-0">{{blog.datefield|date:'MMM'}}</h4>
+            </div>
+            <img src="{{blog.thumb_Image}}" class="img-fluid w-100" alt="blog image">
+          </div>
+          <div class="card-body">
+            <h4 class="font-weight-bold">{{blog.heading}}</h4>
+            <p class="mb-0">{{blog.titleDesc}}</p>
+            <a [routerLink]="[blog.id]" type="button" class="btn btn_shop_now my-3 my-md-3">Read More</a>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>

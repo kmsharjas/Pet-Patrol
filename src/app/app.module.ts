@@ -20,7 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { CareerComponent } from './components/career/career.component';
 import { BlogsComponent } from './components/blogs/blogs.component';
-import { BlogComponent } from './components/blog/blog.component';
+import { BlogComponent, SafePipe } from './components/blog/blog.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { TestimonialComponent } from './components/testimonial/testimonial.component';
@@ -68,6 +68,7 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
     TermsComponent,
     CancellationComponent,
     PrivacyComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule,

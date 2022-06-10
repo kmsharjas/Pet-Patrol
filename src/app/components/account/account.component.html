@@ -180,35 +180,35 @@
                       </div>
                     </li>
 
-                    <!-- <li class="timeline-item" [ngClass]="{'info': orderTrack.dispatched_at}">
+                    <li class="timeline-item" [ngClass]="{'info': orderTrack.payment.dispatched_at}">
                       <div class="ml-3">
-                        <h4>Shipped</h4>
-                        <p *ngIf="orderTrack.dispatched_at" class="text-secondary">
-                          Your order has been shipped on {{ orderTrack.dispatched_at | date: 'medium' }}.
+                        <h4>Shipped</h4>{{orderTrack.payment.dispatched_at}}
+                        <p *ngIf="orderTrack.payment.dispatched_at" class="text-secondary">
+                          Your order has been shipped on {{ orderTrack.payment.dispatched_at | date: 'medium' }}.
                           <br> We will notify you once your order is out for delivered.
                         </p>
                       </div>
-                    </li> -->
+                    </li>
 
-                    <!-- <li class="timeline-item" [ngClass]="{'info': orderTrack.outfordelivery_at}">
+                    <li class="timeline-item" [ngClass]="{'info': orderTrack.payment.outfordelivery_at}">
                       <div class="ml-3">
                         <h4>Out for delivery</h4>
-                        <p *ngIf="orderTrack.outfordelivery_at" class="text-secondary">
-                          Your order is out for delivery on {{ orderTrack.outfordelivery_at | date: 'medium' }}.
+                        <p *ngIf="orderTrack.payment.outfordelivery_at" class="text-secondary">
+                          Your order is out for delivery on {{ orderTrack.payment.outfordelivery_at | date: 'medium' }}.
                           <br> We will notify you once your order is delivered.
                         </p>
                       </div>
-                    </li> -->
+                    </li>
 
-                    <!-- <li class="timeline-item" [ngClass]="{'info': orderTrack.delivered_at}">
+                    <li class="timeline-item" [ngClass]="{'info': orderTrack.payment.delivered_at}">
                       <div class="ml-3">
                         <h4>Delivered</h4>
-                        <p *ngIf="orderTrack.delivered_at" class="text-secondary">
-                          Your order has been delivered on {{ orderTrack.delivered_at | date: 'medium' }}.
+                        <p *ngIf="orderTrack.payment.delivered_at" class="text-secondary">
+                          Your order has been delivered on {{ orderTrack.payment.delivered_at | date: 'medium' }}.
                           <br> We hope you enjoyed your order.
                         </p>
                       </div>
-                    </li> -->
+                    </li>
 
                   </ul>
                   <!-- <button type="button" class="btn btn_common my-3 my-md-3" data-toggle="modal" *ngIf="isReview"

@@ -78,6 +78,6 @@ export class ProductDetailComponent implements OnInit {
     // console.log(this.userservice.getUser());
     const user = this.userservice.getUser();
     this.wishlistservice.addToWish(product, user.id);
-    this.router.navigate(['/wishlist']);
+    // this.router.navigate(['/wishlist']);
   }
 }

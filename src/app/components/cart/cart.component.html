@@ -92,13 +92,13 @@
                   <div class="quantity">
                     <input type="number" min="1" max="10" step="1" [value]="item.quantity"
                       (change)="onChangeQty(item, $event.target['value'])" disabled />
-                    <div class="quantity__btn quantity__btn--up" (click)="
+                    <div class="quantity__btn quantity__btn--up" [hidden]="disableButton(item.offerTitle)" (click)="
                         onChangeQty(
                           item,
                           item.quantity < 10 ? +item.quantity + 1 : 10
                         )
                       "></div>
-                    <div class="quantity__btn quantity__btn--down" (click)="
+                    <div class="quantity__btn quantity__btn--down" [hidden]="disableButton(item.offerTitle)" (click)="
                         onChangeQty(
                           item,
                           item.quantity > 1 ? +item.quantity - 1 : 1
