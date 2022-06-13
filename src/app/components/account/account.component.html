@@ -54,10 +54,10 @@
                   class="list-group-item list-group-item-action border-0 rounded-0 cursor_hover"
                   [ngClass]="{'active': selection === 'order'}"><i class="fa fa-archive mr-3" aria-hidden="true"></i>My
                   Orders</a>
-                <a (click)="selection = 'wishlist'"
+                <!-- <a (click)="selection = 'wishlist'"
                   class="list-group-item list-group-item-action border-0 rounded-0 cursor_hover"
                   [ngClass]="{'active': selection === 'wishlist'}"><i class="fa fa-archive mr-3" aria-hidden="true"></i>
-                  Wish List</a>
+                  Wish List</a> -->
                 <a (click)="selection = 'address'"
                   class="list-group-item list-group-item-action border-0 rounded-0 cursor_hover"
                   [ngClass]="{'active': selection === 'address'}"><i class="fa fa-address-book-o mr-3"
@@ -107,6 +107,10 @@
               </div>
             </div>
           </form>
+        </div>
+        <div class="card_Ads_book" *ngSwitchCase="'wishlist'">
+          <h4 class="hd_font font-weight-bold mb-4">Wish List</h4>
+          <app-wishlist></app-wishlist>
         </div>
         <div class="card_order" *ngSwitchCase="'order'">
           <h4 class="hd_font font-weight-bold mb-4">My Orders</h4>
@@ -182,7 +186,7 @@
 
                     <li class="timeline-item" [ngClass]="{'info': orderTrack.payment.dispatched_at}">
                       <div class="ml-3">
-                        <h4>Shipped</h4>{{orderTrack.payment.dispatched_at}}
+                        <h4>Shipped</h4>
                         <p *ngIf="orderTrack.payment.dispatched_at" class="text-secondary">
                           Your order has been shipped on {{ orderTrack.payment.dispatched_at | date: 'medium' }}.
                           <br> We will notify you once your order is out for delivered.
@@ -211,10 +215,8 @@
                     </li>
 
                   </ul>
-                  <!-- <button type="button" class="btn btn_common my-3 my-md-3" data-toggle="modal" *ngIf="isReview"
-                    data-target="#review-modal">Write a
-                    review</button> -->
-                  <!-- (click)="addreview()">Write a review</button> -->
+                  <button type="button" class="btn btn_common my-3 my-md-3" data-toggle="modal" *ngIf="isReview"
+                    data-target="#review-modal" (click)="addreview()">Write a review</button>
                 </div>
               </div>
             </div>
@@ -229,3 +231,39 @@
     </div>
   </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="review-modal" tabindex="-1" role="dialog" *ngIf="isShow===true"
+  aria-labelledby="review-modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title head_font-family text-white" id="review-modalLabel">Write a review</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" #closeBtn>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row cntct_fm_row justify-content-center">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 cont_fm_col mt-4">
+            <form [formGroup]="testimonialForm">
+              <div class="row justify-content-center">
+                <div class="col-xl-12 col-md-lg-12 col-md-12 col-sm-12 col-12 contact_grp_col">
+                  <div class="form-group contact_grp">
+                    <textarea class="form-control contact_area" rows="5" formControlName="testimonial"
+                      placeholder="Review"></textarea>
+                  </div>
+                </div>
+                <div class="col-xl-12 col-md-lg-12 col-md-12 col-sm-12 col-12 contact_grp_col text-right">
+                  <button type="button" class="btn btn_common my-3 my-md-3"
+                    (click)="saveReview(orderTrack, closeBtn) ">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

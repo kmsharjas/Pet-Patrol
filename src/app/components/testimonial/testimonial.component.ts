@@ -3,6 +3,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import * as AOS from 'aos';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MiscService } from 'src/app/services/misc.service';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-testimonial',
   templateUrl: './testimonial.component.html',
@@ -10,8 +12,14 @@ import { MiscService } from 'src/app/services/misc.service';
 })
 export class TestimonialComponent implements OnInit {
   @ViewChild('closeBtn') closeBtn: ElementRef;
+  api = environment.apiBaseUrl;
+  testimonials$ = this.http.get<any[]>(`${this.api}/listmaintestimonial`);
   distributorForm: FormGroup;
-  constructor(private fb: FormBuilder, private miscService: MiscService) {
+  constructor(
+    private fb: FormBuilder,
+    private miscService: MiscService,
+    private http: HttpClient
+  ) {
     this.distributorForm = this.fb.group({
       name: [null, Validators.required],
       email: [

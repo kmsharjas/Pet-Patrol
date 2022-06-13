@@ -53,9 +53,9 @@ export class CheckoutComponent implements OnInit {
       }),
       map((address) => {
         if (!address) return {};
-        // console.log(address);
+        console.log(address);
         // check for empty object
-        if (address.mobile === '') this.isnewAddress = true;
+        if (!address) this.isnewAddress = true;
         console.log(this.isnewAddress);
         return address;
       })
@@ -84,6 +84,7 @@ export class CheckoutComponent implements OnInit {
       return alert('Please fill all the fields');
     }
 
+    console.log(this.isnewAddress);
     if (this.isnewAddress)
       this.addressService.addAddress({
         ...this.addressForm.addressForm.value,

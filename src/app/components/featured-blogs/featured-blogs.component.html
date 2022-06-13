@@ -3,7 +3,7 @@
   <div class="container">
     <h3 class="text-center hd_font cm_hd font-weight-bold mb-5">Pet Care Blogs</h3>
     <div class="row justify-content-center">
-      <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 my-3 blog_col">
+      <!-- <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 my-3 blog_col">
         <div class="blog_card card border-0">
           <div class="blog_img position-relative">
             <div class="prd_ofr">
@@ -40,23 +40,20 @@
               of big personalities. </p>
           </div>
         </div>
-      </div>
-      <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 my-3 blog_col">
+      </div> -->
+      <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 my-3 blog_col"
+        *ngFor="let fblog of featuredBlogs$ | async|slice:-3">
         <div class="blog_card card border-0">
           <div class="blog_img position-relative">
             <div class="prd_ofr">
-              <p class="mb-0">20</p>
-              <h4 class="mb-0">May</h4>
+              <p class="mb-0">{{fblog.datefield|date:'dd'}}</p>
+              <h4 class="mb-0">{{fblog.datefield|date:'MMM'}}</h4>
             </div>
-            <img src="assets/img/blog3.jpg" class="img-fluid w-100" alt="blog image">
+            <img [src]="fblog.thumb_Image" class="img-fluid w-100" alt="blog image">
           </div>
           <div class="card-body">
-            <h4 class="font-weight-bold">10 Foods You Can Share with Your Dog</h4>
-            <p class="mb-0">Does your dog beg for a taste of what you're cooking, constantly eyeball the fridge or
-              conveniently place themselves
-              nearby at mealtimes?Don't worry, we find it hard to resist puppy-dog eyes too. Make sure you know which
-              foods are safe
-              (and healthy!) to feed your dog </p>
+            <h4 class="font-weight-bold">{{fblog.heading}}</h4>
+            <p class="mb-0">{{fblog.titleDesc}} </p>
           </div>
         </div>
       </div>

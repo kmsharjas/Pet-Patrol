@@ -11,12 +11,12 @@
         <h4 class="hd_font font-weight-bold">Our Client Say's</h4>
         <owl-carousel-o [options]="customOptions" id="testimonial">
           <ng-container>
-            <ng-template carouselSlide>
+            <ng-template carouselSlide *ngFor="let testimonial of testimonials$ | async">
               <div class="card testi_card border-0 item">
                 <div class="card-body text-center">
                   <div class="review_content">
-                    <p>The products are of good quality and my pets are really loving them. </p>
-                    <h5 class="font-weight-bold">Thomas Joseph</h5>
+                    <p>{{ testimonial.review }}</p>
+                    <h5 class="font-weight-bold">{{ testimonial.customerid }}</h5>
                   </div>
                 </div>
                 <div class="user_img">
@@ -26,13 +26,13 @@
             </ng-template>
 
           </ng-container>
-          <ng-container>
+          <!-- <ng-container>
             <ng-template carouselSlide>
               <div class="card testi_card border-0 item">
                 <div class="card-body text-center">
                   <div class="review_content">
                     <p>Petpatrol adult dog food is the new favourite of my Puppy.. </p>
-                    <h5 class="font-weight-bold">George</h5>
+                    <h5 class="font-weight-bold">George Wash</h5>
                   </div>
                 </div>
                 <div class="user_img">
@@ -41,7 +41,7 @@
               </div>
             </ng-template>
 
-          </ng-container>
+          </ng-container> -->
 
         </owl-carousel-o>
       </div>

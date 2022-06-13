@@ -57,7 +57,8 @@
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 checkout_fom_col my-3 my-md-3">
                 <div class="form-group">
                   <label class="font-weight-bold">Phone</label>
-                  <input type="text" class="form-control" formControlName="phone">
+                  <input type="text" class="form-control" formControlName="phone" maxlength=10
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                 </div>
               </div>
 
