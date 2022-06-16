@@ -130,7 +130,14 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 my-5 text-center">
-        <a routerLink="products">
+        <a routerLink="products" [queryParams]="{
+                                  animal_category: dogCategory,
+                                  service_category: null,
+                                  service_subcategory: null,
+                                  packaging_type: null,
+                                  min_price: null,
+                                  max_price: null
+                                }" queryParamsHandling="merge">
           <img src="assets/img/special-offer1.png" class="img-fluid">
         </a>
       </div>

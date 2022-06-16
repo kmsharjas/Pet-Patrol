@@ -64,6 +64,9 @@ export class CareerComponent implements OnInit {
 
   Submit(val) {
     // alert(val.value);
+    if (!this.careerForm.valid) {
+      alert('Please fill all the fields');
+    }
     console.log(val.value);
 
     console.log(val);
@@ -79,6 +82,7 @@ export class CareerComponent implements OnInit {
 
     this.http.post(this.baseUrl + '/filesend', formData).subscribe((res) => {
       console.log(res);
+      alert('Application Submitted Successfully');
       this.careerForm.reset();
     });
     console.log(val.value);

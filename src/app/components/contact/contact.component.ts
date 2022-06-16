@@ -39,6 +39,7 @@ export class ContactComponent implements OnInit {
 
       this.http.post(this.envApiRoot + '/contactus', body).subscribe((res) => {
         console.log(res);
+        alert('Thank you for contacting us');
         this.contactForm.reset();
       });
     } else alert('Please fill all the fields');
