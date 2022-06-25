@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://122.165.54.198:6002',
+  apiBaseUrl: 'http://122.165.54.198:6002', //test
+  // apiBaseUrl: 'https://api.petpatrol.co.in', //release
 };
 
 /*
