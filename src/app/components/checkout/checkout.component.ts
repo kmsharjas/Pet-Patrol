@@ -148,7 +148,7 @@ export class CheckoutComponent implements OnInit {
 
     // rzp_test_vIbFnBrsNcfxda", "QXu9nUePM3jWaJ6pAwpsAt2q
     const options: any = {
-      key: 'rzp_test_rIujksmYb0FaSx',
+      key: 'rzp_live_0KLgsqpexTUF7q',
       amount: payment.amount * 100, // amount should be in paise format to display Rs 1255 without decimal point
       currency: 'INR',
       name: '', // company name or product name
