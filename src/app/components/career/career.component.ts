@@ -56,10 +56,10 @@ export class CareerComponent implements OnInit {
     }
 
     this.file = input.files[0];
-    console.log(this.file);
+    // console.log(this.file);
 
     this.fileInfo = `${this.file.name} (${formatBytes(this.file.size)})`;
-    console.log(this.fileInfo);
+    // console.log(this.fileInfo);
   }
 
   Submit(val) {
@@ -67,9 +67,9 @@ export class CareerComponent implements OnInit {
     if (!this.careerForm.valid) {
       alert('Please fill all the fields');
     }
-    console.log(val.value);
+    // console.log(val.value);
 
-    console.log(val);
+    // console.log(val);
     let data = val.value;
     let fileToUpload = <File>this.file;
     const formData = new FormData();
@@ -78,14 +78,14 @@ export class CareerComponent implements OnInit {
     formData.append('first_name', data.first_name);
     formData.append('last_name', data.last_name);
     formData.append('phone', data.phone);
-    console.log(formData);
+    // console.log(formData);
 
     this.http.post(this.baseUrl + '/filesend', formData).subscribe((res) => {
-      console.log(res);
+      // console.log(res);
       alert('Application Submitted Successfully');
       this.careerForm.reset();
     });
-    console.log(val.value);
+    // console.log(val.value);
 
     let body = {
       first_name: data.first_name,
@@ -94,6 +94,6 @@ export class CareerComponent implements OnInit {
       phone: data.phone,
       file: data.file,
     };
-    console.log(body);
+    // console.log(body);
   }
 }
